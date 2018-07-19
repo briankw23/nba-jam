@@ -9,6 +9,7 @@ import MyTeam from '../components/MyTeam/MyTeam';
 import Login from '../components/Login/Login';
 import Register from '../components/Register/Register';
 
+import firebase from 'firebase';
 import fbConnection from '../firebaseRequests/connection';
 fbConnection();
 
@@ -52,12 +53,33 @@ class App extends Component {
     authed: false,
   }
 
+  componentDidMount() {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ authed: true });
+      } else {
+        this.setState({ authed: false });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.removeListener();
+  }
+
+  runAway = () => {
+    this.setState({ authed: false });
+  }
+
   render() {
     return (
       <div className="App">
         <BrowserRouter>
           <div>
-            <NavBar />
+            <NavBar
+              authed={this.state.authed}
+              runAway={this.runAway}
+            />
             <div className="container">
               <div className="row">
                 <Switch>
