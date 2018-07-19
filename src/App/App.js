@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Redirect, Switch } from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
 
 import Home from '../components/Home/Home';
@@ -22,7 +21,7 @@ const PublicRoute = ({ component: Component, authed, ...rest }) => {
           <Component {...props} />
         ) : (
             <Redirect
-              to={{ pathname: '/orders', state: { from: props.location } }}
+              to={{ pathname: '/myTeam', state: { from: props.location } }}
             />
           )
       }
@@ -63,7 +62,9 @@ class App extends Component {
               <div className="row">
                 <Switch>
                   <Route path="/" exact component={Home} />
+                  <PublicRoute path="/login" authed={this.state.authed} component={Login} />
                   <PublicRoute path="/register" authed={this.state.authed} component={Register} />
+                  <PrivateRoute path="/createTeam" authed={this.state.authed} component={CreateTeam} />
                   <PrivateRoute path="/myTeam" authed={this.state.authed} component={MyTeam} />
                 </Switch>
               </div>
