@@ -25,18 +25,32 @@ class Home extends React.Component {
 
     const teamsComponents = this.state.teams.map((team) => {
       return (
-        <li className="Teams" key={team.id} index={team.id}>{team.name}</li>
+        <li className="Teams col-sm-3" key={team.id} index={team.id}>{team.name}</li>
       );
     });
     return (
-      <div className="Home">
+      <div className="">
         <div className="container">
-          <div className="row">
+          <div className="row top">
+            {/* East Section */}
             <div className="col-sm-2">
-              East</div>
+              <h2 className="East">East</h2>
+            </div>
+
+            {/* Teams */}
             <div className="col-sm-8">{teamsComponents}</div>
-            <div className="col-sm-2">West</div>
+
+            {/* West Section */}
+            <div className="col-sm-2">
+              <h2 className="West">West</h2>
+            </div>
+
           </div>
+        {/* Second Row */}
+        <div className="row bottom">
+          <div className="col-sm-6">Player 1</div>
+          <div className="col-sm-6">Player 2</div>
+        </div>
         </div>
       </div>
     )

@@ -1,6 +1,18 @@
-.Home{
-  background-color: blanchedalmond;
+.top{
+  background-color: white;
+}
+
+.bottom{
+  background-color: skyblue;
 }
 .Teams{
   list-style: none;
+}
+.East{
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+.West{
+  writing-mode: vertical-rl;
+  text-orientation: upright;
 }
