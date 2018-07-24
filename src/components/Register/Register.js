@@ -12,7 +12,7 @@ class Register extends React.Component {
     user: {
       email: '',
       password: '',
-    }
+    },
   }
 
   registerClickEvent = (e) => {
@@ -40,11 +40,11 @@ class Register extends React.Component {
     this.setState({ user: tempUser });
   };
 
-  render() {
+  render () {
     const { user } = this.state;
     return (
       <div className="Register">
-                <div id="login-form">
+        <div id="login-form">
           <h1 className="text-center">Register</h1>
           <form className="form-horizontal col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
             <div className="form-group">
@@ -96,7 +96,7 @@ class Register extends React.Component {
           </form>
         </div>
       </div>
-    )
+    );
   }
 }
 

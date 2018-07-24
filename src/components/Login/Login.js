@@ -37,7 +37,7 @@ class Login extends React.Component {
     tempUser.password = e.target.value;
     this.setState({ user: tempUser });
   };
-  render() {
+  render () {
     const { user } = this.state;
     return (
       <div className="Login">
@@ -93,7 +93,7 @@ class Login extends React.Component {
           </form>
         </div>
       </div>
-    )
+    );
   }
 }
 
