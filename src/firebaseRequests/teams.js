@@ -22,6 +22,25 @@ const getRequest = () => {
   });
 };
 
+const getRequestOneTeam = (uid) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${constants.firebaseConfig.databaseURL}/teams.json?orderBy="uid"&equalTo="${uid}"`)
+      .then((res) => {
+        const teams = [];
+        if (res.data !== null) {
+          Object.keys(res.data).forEach(fbKey => {
+            res.data[fbKey].id = fbKey;
+            teams.push(res.data[fbKey]);
+          });
+        }
+        resolve(teams);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
 const postRequest = (newTeam) => {
   return new Promise((resolve, reject) => {
     axios
@@ -35,4 +54,4 @@ const postRequest = (newTeam) => {
   });
 };
 
-export default { getRequest, postRequest };
+export default { getRequest, postRequest, getRequestOneTeam };
