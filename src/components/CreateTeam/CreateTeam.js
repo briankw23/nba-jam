@@ -49,12 +49,12 @@ class CreateTeam extends React.Component {
       <div className="CreateTeam">
         <h2 className="text-center">Create Team:</h2>
         <form onSubmit={this.submitTeamEvent}>
-          <div className="row">
-            <fieldset className="col-xs-3">
+          <div className="">
+            <fieldset className="">
               <label htmlFor="Team Name">Team Name:</label>
               <br />
               <input
-                className="col-xs-12"
+                className=""
                 type="text"
                 id="name"
                 placeholder="Flint Tropics"
@@ -63,11 +63,11 @@ class CreateTeam extends React.Component {
               />
             </fieldset>
 
-            <fieldset className="col-xs-3">
+            <fieldset className="">
               <label htmlFor="Team Name">Team Logo</label>
               <br />
               <input
-                className="col-xs-12"
+                className=""
                 type="text"
                 id="image"
                 placeholder="https://www.spreadshirt.com/image-server/v1/mp/designs/11637207,width=178,height=178/flint-tropics.png"
@@ -75,7 +75,7 @@ class CreateTeam extends React.Component {
                 onChange={this.imageChange}
               />
             </fieldset>
-            <button type="submit" className="col-xs-3 btn btn-success">
+            <button type="submit" className="btn btn-success">
             Submit
             </button>
           </div>

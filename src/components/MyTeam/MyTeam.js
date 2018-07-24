@@ -34,7 +34,7 @@ class MyTeam extends React.Component {
     return (
       <div className="MyTeam">
         <button><Link to="/createTeam">Create/Edit Team</Link></button>
-        <button><Link to="/createPlayer">Create/Edit Player</Link></button>
+        <button><Link to="/createPlayer">Create Player</Link></button>
         <div>
           {myTeam}
         </div>
