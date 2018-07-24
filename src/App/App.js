@@ -11,6 +11,7 @@ import Register from '../components/Register/Register';
 
 import firebase from 'firebase';
 import fbConnection from '../firebaseRequests/connection';
+import CreatePlayer from '../components/CreatePlayer/CreatePlayer';
 fbConnection();
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
@@ -21,10 +22,10 @@ const PublicRoute = ({ component: Component, authed, ...rest }) => {
         authed === false ? (
           <Component {...props} />
         ) : (
-            <Redirect
-              to={{ pathname: '/myTeam', state: { from: props.location } }}
-            />
-          )
+          <Redirect
+            to={{ pathname: '/myTeam', state: { from: props.location } }}
+          />
+        )
       }
     />
   );
@@ -38,10 +39,10 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
         authed === true ? (
           <Component {...props} />
         ) : (
-            <Redirect
-              to={{ pathname: '/login', state: { from: props.location } }}
-            />
-          )
+          <Redirect
+            to={{ pathname: '/login', state: { from: props.location } }}
+          />
+        )
       }
     />
   );
@@ -53,7 +54,7 @@ class App extends Component {
     authed: false,
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ authed: true });
@@ -63,7 +64,7 @@ class App extends Component {
     });
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this.removeListener();
   }
 
@@ -71,7 +72,7 @@ class App extends Component {
     this.setState({ authed: false });
   }
 
-  render() {
+  render () {
     return (
       <div className="App">
         <BrowserRouter>
@@ -87,6 +88,7 @@ class App extends Component {
                   <PublicRoute path="/login" authed={this.state.authed} component={Login} />
                   <PublicRoute path="/register" authed={this.state.authed} component={Register} />
                   <PrivateRoute path="/createTeam" authed={this.state.authed} component={CreateTeam} />
+                  <PrivateRoute path="/createPlayer" authed={this.state.authed} component={CreatePlayer} />
                   <PrivateRoute path="/myTeam" authed={this.state.authed} component={MyTeam} />
                 </Switch>
               </div>

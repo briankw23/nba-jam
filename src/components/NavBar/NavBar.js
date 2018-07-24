@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 class NavBar extends React.Component {
-  render() {
+  render () {
 
     const { authed, runAway } = this.props;
     const logoutClickEvent = () => {
@@ -35,32 +35,32 @@ class NavBar extends React.Component {
                 <li><a href="#">Link</a></li> */}
               </ul>
               <ul className="nav navbar-nav navbar-right">
-                            {
-                authed ? (
-                  <ul className="nav navbar-nav navbar-right">
-                    <li>
-                      <Link to="/myTeam">My Team</Link>
-                    </li>
-                    {/* <li>
+                {
+                  authed ? (
+                    <ul className="nav navbar-nav navbar-right">
+                      <li>
+                        <Link to="/myTeam">My Team</Link>
+                      </li>
+                      {/* <li>
                       <Link to="/orders">Orders</Link>
                     </li> */}
-                    <li className="navbar-form">
-                      <button
-                        onClick={logoutClickEvent}
-                        className="btn btn-danger"
-                      >
-                        Logout
-                      </button>
-                    </li>
-                  </ul>
-                ) : (
-                  <ul className="nav navbar-nav navbar-right">
-                    <li>
-                      <Link to="/login">Login</Link>
-                    </li>
-                  </ul>
-                )
-              }
+                      <li className="navbar-form">
+                        <button
+                          onClick={logoutClickEvent}
+                          className="btn btn-danger"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </ul>
+                  ) : (
+                    <ul className="nav navbar-nav navbar-right">
+                      <li>
+                        <Link to="/login">Login</Link>
+                      </li>
+                    </ul>
+                  )
+                }
 
               </ul>
 
@@ -68,7 +68,7 @@ class NavBar extends React.Component {
           </div>
         </nav>
       </div>
-    )
+    );
   }
 }
 

@@ -25,7 +25,7 @@ class MyTeam extends React.Component {
   render () {
     const myTeam = this.state.myTeam.map((team) => {
       return (
-        <div>
+        <div key={team.id}>
           <h1> {team.name}</h1>
           <img src={team.image} alt="" />
         </div>
@@ -34,6 +34,7 @@ class MyTeam extends React.Component {
     return (
       <div className="MyTeam">
         <button><Link to="/createTeam">Create/Edit Team</Link></button>
+        <button><Link to="/createPlayer">Create Player</Link></button>
         <div>
           {myTeam}
         </div>
