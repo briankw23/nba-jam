@@ -10,18 +10,18 @@ class Home extends React.Component {
     teams: [],
   }
 
-  componentDidMount() {
+  componentDidMount () {
     teamsRequest
       .getRequest()
       .then((teams) => {
-        this.setState({ teams })
+        this.setState({ teams });
       })
       .catch((err) => {
         console.error('error getting teams');
-      })
+      });
   }
 
-  render() {
+  render () {
 
     const teamsComponents = this.state.teams.map((team) => {
       return (
@@ -46,14 +46,14 @@ class Home extends React.Component {
             </div>
 
           </div>
-        {/* Second Row */}
-        <div className="row bottom">
-          <div className="col-sm-6">Player 1</div>
-          <div className="col-sm-6">Player 2</div>
-        </div>
+          {/* Second Row */}
+          <div className="row bottom">
+            <div className="col-sm-6">Player 1</div>
+            <div className="col-sm-6">Player 2</div>
+          </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
