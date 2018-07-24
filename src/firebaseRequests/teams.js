@@ -22,4 +22,17 @@ const getRequest = () => {
 });
 };
 
-export default { getRequest };
+const postRequest = (newTeam) => {
+  return new Promise((resolve,reject) => {
+    axios
+    .post(`${constants.firebaseConfig.databaseURL}/teams.json`, newTeam)
+    .then((res) => {
+      resolve(res);
+    })
+    .catch((err) => {
+      reject(err);
+    })
+  })
+}
+
+export default { getRequest, postRequest };
