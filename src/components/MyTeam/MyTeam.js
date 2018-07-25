@@ -42,6 +42,15 @@ class MyTeam extends React.Component {
         </div>
       );
     });
+
+    const rosterComponents = this.state.roster.map((player) => {
+      return (
+        <Roster
+          key={player.id}
+          details={player}
+        />
+      );
+    });
     return (
       <div className="MyTeam">
         <button><Link to="/createTeam">Create/Edit Team</Link></button>
@@ -53,7 +62,7 @@ class MyTeam extends React.Component {
           <Starters/>
         </div>
         <div>
-          <Roster details= {this.state.roster}/>
+          {rosterComponents}
         </div>
       </div>
     );

@@ -6,9 +6,13 @@ class Roster extends React.Component {
   }
 
   render () {
+    const { details } = this.props;
     return (
       <div className="Roster">
         <h1>Roster</h1>
+        <li>
+          <h3>{details.name}</h3>
+        </li>
       </div>
     );
   }
