@@ -15,4 +15,24 @@ const postRequest = (newPlayer) => {
   });
 };
 
-export default {  postRequest };
+const getRequestRoster = (id) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${constants.firebaseConfig.databaseURL}/players.json?orderBy="teamId"&equalTo="${id}"`)
+      .then((res) => {
+        const player = [];
+        if (res.data !== null) {
+          Object.keys(res.data).forEach(fbKey => {
+            res.data[fbKey].id = fbKey;
+            player.push(res.data[fbKey]);
+          });
+        }
+        resolve(player);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+export default {  postRequest, getRequestRoster };
