@@ -12,6 +12,8 @@ import Register from '../components/Register/Register';
 import firebase from 'firebase';
 import fbConnection from '../firebaseRequests/connection';
 import CreatePlayer from '../components/CreatePlayer/CreatePlayer';
+import PlayerCard from '../components/PlayerCard/PlayerCard';
+
 fbConnection();
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
@@ -90,6 +92,7 @@ class App extends Component {
                   <PrivateRoute path="/createTeam" authed={this.state.authed} component={CreateTeam} />
                   <PrivateRoute path="/createPlayer" authed={this.state.authed} component={CreatePlayer} />
                   <PrivateRoute path="/myTeam" authed={this.state.authed} component={MyTeam} />
+                  <PrivateRoute path="/myTeam/:id" authed={this.state.authed} component={PlayerCard} />
                 </Switch>
               </div>
             </div>
