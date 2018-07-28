@@ -89,7 +89,7 @@ class CreatePlayer extends React.Component {
         <h1>Create Player</h1>
         <form action="" onSubmit={this.submitPlayerEvent} >
           <div className="form-group">
-            <label for="">Name:</label>
+            <label>Name:</label>
             <input
               type="text"
               className="form-control"
@@ -100,7 +100,7 @@ class CreatePlayer extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label for="">Image:</label>
+            <label>Image:</label>
             <input type="text"
               className="form-control"
               id="image"
@@ -110,7 +110,7 @@ class CreatePlayer extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label for="">Defense:</label>
+            <label>Defense:</label>
             <input type="number"
               className="form-control"
               id="defense"
@@ -120,7 +120,7 @@ class CreatePlayer extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label for="">Dunks:</label>
+            <label>Dunks:</label>
             <input type="number"
               className="form-control"
               id="dunks"
@@ -130,7 +130,7 @@ class CreatePlayer extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label for="">Speed:</label>
+            <label>Speed:</label>
             <input type="number"
               className="form-control"
               id="speed"
@@ -140,7 +140,7 @@ class CreatePlayer extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label for="">Three Pointers:</label>
+            <label>Three Pointers:</label>
             <input type="number"
               className="form-control"
               id="threePointer"
