@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import teamsRequest from '../../firebaseRequests/teams';
 import authRequest from '../../firebaseRequests/auth';
 import playersRequest from '../../firebaseRequests/players';
-import Roster from '../Roster/Roster';
+// import Roster from '../Roster/Roster';
 import Starters from '../Starters/Starters';
 
 import './MyTeam.css';
@@ -32,7 +32,10 @@ class MyTeam extends React.Component {
         console.error('error getting teams', err);
       });
   }
-
+  // renderStarter () {
+  //   if (player.starter === true) return <button>Starter</button>;
+  //   return <button>Bench</button>;
+  // }
   render () {
     const myTeam = this.state.myTeam.map((team) => {
       return (
@@ -42,13 +45,24 @@ class MyTeam extends React.Component {
         </div>
       );
     });
-
     const rosterComponents = this.state.roster.map((player) => {
+      // const playerCardClickEvent = () => {
+
+      // };
       return (
-        <Roster
-          key={player.id}
-          details={player}
-        />
+        <div className="Roster">
+          <div className="media" key={player.id}>
+            <div className="media-left">
+              <img className="media-object" src={player.image} alt="..." />
+            </div>
+            <div className="media-body">
+              <h4 className="media-heading">{player.name}</h4>
+              <button>Edit</button>
+              <button>Delete</button>
+              {/* {this.renderStarter()} */}
+            </div>
+          </div>
+        </div>
       );
     });
     return (
@@ -59,7 +73,9 @@ class MyTeam extends React.Component {
           {myTeam}
         </div>
         <div>
-          <Starters/>
+          <Starters
+            details = {this.state.roster}
+          />
         </div>
         <div>
           {rosterComponents}
