@@ -45,15 +45,15 @@ class Roster extends React.Component {
   }
 
   formFieldStateString = (name, e) => {
-    const tempPlayer = {...this.state.newPlayer};
-    tempPlayer[name] = e.target.value;
-    this.setState({ updatePlayer: tempPlayer});
+    const currentPlayer = {...this.state.updatePlayer};
+    currentPlayer[name] = e.target.value;
+    this.setState({ updatePlayer: currentPlayer});
   }
 
   formFieldStateNumber = (name, e) => {
-    const tempPlayer = {...this.state.newPlayer};
-    tempPlayer[name] = e.target.value * 1;
-    this.setState({ updatePlayer: tempPlayer});
+    const currentPlayer = {...this.state.updatePlayer};
+    currentPlayer[name] = e.target.value * 1;
+    this.setState({ updatePlayer: currentPlayer});
   }
 
   nameChange = (e) => {
@@ -110,7 +110,7 @@ class Roster extends React.Component {
                     type="text"
                     className="form-control"
                     id="name"
-                    defaultValue={details.name}
+                    defaultValue={this.state.updatePlayer.name}
                     onChange={this.nameChange}
                   />
                 </div>
@@ -121,7 +121,7 @@ class Roster extends React.Component {
                     className="form-control"
                     id="image"
                     placeholder="Image URL"
-                    defaultValue={details.image}
+                    defaultValue={this.state.updatePlayer.image}
                     onChange={this.imageChange}
                   />
                 </div>
@@ -132,7 +132,7 @@ class Roster extends React.Component {
                     className="form-control"
                     id="defense"
                     placeholder="0 to 100"
-                    defaultValue={details.defense}
+                    defaultValue={this.state.updatePlayer.defense}
                     onChange={this.defenseChange}
                   />
                 </div>
@@ -143,7 +143,7 @@ class Roster extends React.Component {
                     className="form-control"
                     id="dunks"
                     placeholder="0 to 100"
-                    defaultValue={details.dunks}
+                    defaultValue={this.state.updatePlayer.dunks}
                     onChange={this.dunksChange}
                   />
                 </div>
@@ -154,7 +154,7 @@ class Roster extends React.Component {
                     className="form-control"
                     id="speed"
                     placeholder="0 to 100"
-                    defaultValue={details.speed}
+                    defaultValue={this.state.updatePlayer.speed}
                     onChange={this.speedChange}
                   />
                 </div>
@@ -165,7 +165,7 @@ class Roster extends React.Component {
                     className="form-control"
                     id="threePointer"
                     placeholder="0 to 100"
-                    defaultValue={details.threePointer}
+                    defaultValue={this.state.updatePlayer.threePointer}
                     onChange={this.threePointerChange}
                   />
                 </div>
