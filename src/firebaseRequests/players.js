@@ -61,4 +61,17 @@ const putRequest = (playerId, updatedPlayer) => {
   });
 };
 
-export default {  postRequest, getRequestRoster, putRequest, getRequestSinglePlayer };
+const deleteRequest = (playerId) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .delete(`${constants.firebaseConfig.databaseURL}/players/${playerId}.json`)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+export default {  postRequest, getRequestRoster, putRequest, getRequestSinglePlayer, deleteRequest };

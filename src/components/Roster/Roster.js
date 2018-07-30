@@ -46,6 +46,20 @@ class Roster extends React.Component {
       });
   };
 
+  deletePlayerClick = (e, idz) => {
+    console.error (e, 'clicked delete');
+    const firebaseId = idz;
+    console.error(firebaseId);
+    playersRequest
+      .deleteRequest(firebaseId)
+      .then(() => {
+        this.setState({show: false });
+      })
+      .catch((err) => {
+        console.error('error with delete player', err);
+      });
+  };
+
   handleClose = () => {
     this.setState({show: false });
   }
@@ -182,7 +196,7 @@ class Roster extends React.Component {
                 <button type="button" onClick={(e) => this.updatePlayerClick(e, details.id)} className="btn btn-success">
                   Update
                 </button>
-                <button type="submit" className="btn btn-success">
+                <button type="button" onClick={(e) => this.deletePlayerClick(e, details.id)} className="btn btn-success">
                   Delete
                 </button>
               </form>
