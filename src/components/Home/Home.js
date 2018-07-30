@@ -1,6 +1,8 @@
 import React from 'react';
 
 import teamsRequest from '../../firebaseRequests/teams';
+import playersRequest from '../../firebaseRequests/players';
+
 import { Button } from 'react-bootstrap';
 
 import './Home.css';
@@ -25,7 +27,18 @@ class Home extends React.Component {
       });
   }
 
-
+  teamClickEvent = (e, id) => {
+    console.error(id);
+    playersRequest
+      .getRequestRoster(id)
+      .then(roster => {
+        this.setState({ playerOneRoster: roster });
+        console.error(roster);
+      })
+      .catch(err => {
+        console.error("error getting teams", err);
+      });
+  }
 
   render () {
 
@@ -39,8 +52,8 @@ class Home extends React.Component {
       return team.confId === 0;
     }).map((team) => {
       return (
-        <Button onClick={(e) => this.teamClickEvent(e, team.id)}    >
-          <li className="Teams col-sm-3" key={team.id} index={team.id}>{team.name}</li>
+        <Button onClick={(e) => this.teamClickEvent(e, team.id)} key={team.id}>
+          <li className="Teams col-sm-2" key={team.id} index={team.id}>{team.name}</li>
         </Button>
       );
     });
@@ -49,8 +62,8 @@ class Home extends React.Component {
       return team.confId === 1;
     }).map((team) => {
       return (
-        <Button>
-          <li className="Teams col-sm-3" key={team.id} index={team.id}>{team.name}</li>
+        <Button onClick={(e) => this.teamClickEvent(e, team.id)} key={team.id}>
+          <li className="Teams col-sm-2" key={team.id} index={team.id}>{team.name}</li>
         </Button>
       );
     });
