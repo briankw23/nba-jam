@@ -30,6 +30,22 @@ class MyTeam extends React.Component {
       });
   }
 
+  redirectToMyTeam = () => {
+    teamsRequest
+      .getRequestOneTeam(authRequest.getUid())
+      .then(myTeam => {
+        this.setState({ myTeam });
+        const id = this.state.myTeam[0].id;
+        playersRequest.getRequestRoster(id).then(roster => {
+          this.setState({ roster });
+          console.error(roster);
+        });
+      })
+      .catch(err => {
+        console.error("error getting teams", err);
+      });
+  };
+
   render () {
     const myTeam = this.state.myTeam.map(team => {
       return (
@@ -42,6 +58,7 @@ class MyTeam extends React.Component {
     const rosterComponents = this.state.roster.map(player => {
       return (
         <Roster
+          redirectToMyTeam= {this.redirectToMyTeam}
           key={player.id}
           index={player.id}
           details= {player}

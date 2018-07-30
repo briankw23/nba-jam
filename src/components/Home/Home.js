@@ -1,6 +1,7 @@
 import React from 'react';
 
 import teamsRequest from '../../firebaseRequests/teams';
+import { Button } from 'react-bootstrap';
 
 import './Home.css';
 
@@ -8,6 +9,9 @@ class Home extends React.Component {
 
   state = {
     teams: [],
+    playerOneRoster: [],
+    playerTwoRoster: [],
+    playerInContext: 0,
   }
 
   componentDidMount () {
@@ -21,13 +25,36 @@ class Home extends React.Component {
       });
   }
 
+
+
   render () {
 
-    const teamsComponents = this.state.teams.map((team) => {
+    // const teamsComponents = this.state.teams.map((team) => {
+    //   return (
+    //     <li className="Teams col-sm-3" key={team.id} index={team.id}>{team.name}</li>
+    //   );
+    // });
+
+    const eastComponents = this.state.teams.filter((team) => {
+      return team.confId === 0;
+    }).map((team) => {
       return (
-        <li className="Teams col-sm-3" key={team.id} index={team.id}>{team.name}</li>
+        <Button onClick={(e) => this.teamClickEvent(e, team.id)}    >
+          <li className="Teams col-sm-3" key={team.id} index={team.id}>{team.name}</li>
+        </Button>
       );
     });
+
+    const westComponents = this.state.teams.filter((team) => {
+      return team.confId === 1;
+    }).map((team) => {
+      return (
+        <Button>
+          <li className="Teams col-sm-3" key={team.id} index={team.id}>{team.name}</li>
+        </Button>
+      );
+    });
+
     return (
       <div className="">
         <div className="container">
@@ -38,7 +65,13 @@ class Home extends React.Component {
             </div>
 
             {/* Teams */}
-            <div className="col-sm-8">{teamsComponents}</div>
+            <div className="col-sm-4">
+              {eastComponents}
+            </div>
+
+            <div className="col-sm-4">
+              {westComponents}
+            </div>
 
             {/* West Section */}
             <div className="col-sm-2">
@@ -48,8 +81,12 @@ class Home extends React.Component {
           </div>
           {/* Second Row */}
           <div className="row bottom">
-            <div className="col-sm-6">Player 1</div>
-            <div className="col-sm-6">Player 2</div>
+            <div className="col-sm-6">
+              <Button>Player 1</Button>
+            </div>
+            <div className="col-sm-6">
+              <Button>Player 2</Button>
+            </div>
           </div>
         </div>
       </div>

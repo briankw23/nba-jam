@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Media } from "react-bootstrap";
 import playersRequest from "../../firebaseRequests/players";
 
 const defaultPlayer = {
@@ -39,7 +39,7 @@ class Roster extends React.Component {
     playersRequest
       .putRequest(firebaseId, this.state.updatePlayer)
       .then(() => {
-        this.props.history.push('/myTeam');
+        this.props.redirectToMyTeam();
       })
       .catch((err) => {
         console.error('error with update player', err);
@@ -53,7 +53,7 @@ class Roster extends React.Component {
     playersRequest
       .deleteRequest(firebaseId)
       .then(() => {
-        this.props.history.push('/myTeam');
+        this.props.redirectToMyTeam();
       })
       .catch((err) => {
         console.error('error with delete player', err);
@@ -116,8 +116,14 @@ class Roster extends React.Component {
               key={details.id}
               onClick={this.handleShow}
             >
-              <img className="media-object" src={details.image} alt="..." />
-              <h4 className="media-heading">{details.name}</h4>
+              <Media>
+                <Media.Left>
+                  <img width={64} height={64} src={details.image} alt="thumbnail" />
+                </Media.Left>
+                <Media.Body>
+                  <Media.Heading>{details.name}</Media.Heading>
+                </Media.Body>
+              </Media>
             </Button>
           </div>
           <Modal show={this.state.show} onHide={this.handleClose}>
@@ -191,12 +197,17 @@ class Roster extends React.Component {
                     onChange={this.threePointerChange}
                   />
                 </div>
-                <button type="button" onClick={(e) => this.updatePlayerClick(e, details.id)} className="btn btn-success">
-                  Update
-                </button>
-                <button type="button" onClick={(e) => this.deletePlayerClick(e, details.id)} className="btn btn-success">
-                  Delete
-                </button>
+                <div onClick={this.handleClose}>
+                  <button type="button" onClick={(e) => this.updatePlayerClick(e, details.id)} className="btn btn-success">
+                    Update
+                  </button>
+                </div>
+
+                <div onClick={this.handleClose}>
+                  <button type="button" onClick={(e) => this.deletePlayerClick(e, details.id)} className="btn btn-success">
+                    Delete
+                  </button>
+                </div>
               </form>
             </Modal.Body>
             <Modal.Footer>
