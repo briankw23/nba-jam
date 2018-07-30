@@ -35,6 +35,19 @@ const getRequestRoster = (id) => {
   });
 };
 
+const getRequestSinglePlayer = (id) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${constants.firebaseConfig.databaseURL}/players/${id}.json`)
+      .then(res => {
+        resolve(res.data);
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+};
+
 const putRequest = (playerId, updatedPlayer) => {
   return new Promise((resolve, reject) => {
     axios
@@ -48,4 +61,4 @@ const putRequest = (playerId, updatedPlayer) => {
   });
 };
 
-export default {  postRequest, getRequestRoster, putRequest };
+export default {  postRequest, getRequestRoster, putRequest, getRequestSinglePlayer };

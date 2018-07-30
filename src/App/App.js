@@ -92,7 +92,7 @@ class App extends Component {
                   <PrivateRoute path="/createTeam" authed={this.state.authed} component={CreateTeam} />
                   <PrivateRoute path="/createPlayer" authed={this.state.authed} component={CreatePlayer} />
                   <PrivateRoute path="/myTeam" authed={this.state.authed} component={MyTeam} />
-                  <PrivateRoute path="/myTeam/:id" authed={this.state.authed} component={PlayerCard} />
+                  <PrivateRoute path="/playerCard" authed={this.state.authed} component={PlayerCard} />
                 </Switch>
               </div>
             </div>

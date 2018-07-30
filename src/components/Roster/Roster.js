@@ -1,12 +1,41 @@
 import React from "react";
 import { Panel, Button, Modal } from "react-bootstrap";
-// import playersRequest from "../../firebaseRequests/players";
+import playersRequest from "../../firebaseRequests/players";
+
+const defaultPlayer = {
+  name: '',
+  defense: '',
+  dunks: '',
+  image: '',
+  speed: '',
+  starter: false,
+  teamId: '',
+  threePointer: '',
+};
 
 class Roster extends React.Component {
   state = {
-    updatePlayer: {},
+    updatePlayer: defaultPlayer,
     show: false,
+    // id: '',
   }
+
+  playerClickEvent = (e, idz) => {
+    // this.setState({id: idz });
+
+    console.error('player clicked', idz);
+    // e.preventDefault();
+    playersRequest
+      .getRequestSinglePlayer(idz)
+      .then(player => {
+        this.setState({ updatePlayer: player });
+        console.error(player);
+      })
+      .catch(err => {
+        console.error("error getting single player", err);
+      });
+  };
+
   handleClose = () => {
     this.setState({show: false });
   }
@@ -15,9 +44,6 @@ class Roster extends React.Component {
     this.setState({show: true });
   }
 
-  playerSelectEvent = (id) => {
-    this.setState({playerId: id});
-  };
   formFieldStateString = (name, e) => {
     const tempPlayer = {...this.state.newPlayer};
     tempPlayer[name] = e.target.value;
@@ -53,11 +79,11 @@ class Roster extends React.Component {
   threePointerChange = (e) => {
     this.formFieldStateNumber('threePointer', e);
   }
+
   render () {
     const { details } = this.props;
     return (
       <div>
-        {/* // Button and Modal for Player */}
         <div>
           <Button
             bsStyle="primary"
@@ -65,10 +91,13 @@ class Roster extends React.Component {
             key={details.id}
             onClick={this.handleShow}
           >
-            <img className="media-object" src={details.image} alt="..." />
-            <h4 className="media-heading">{details.name}</h4>
+            <Panel
+              onClick={(e) => this.playerClickEvent(e, details.id)}
+            >
+              <img className="media-object" src={details.image} alt="..." />
+              <h4 className="media-heading">{details.name}</h4>
+            </Panel>
           </Button>
-
           <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>Modal heading</Modal.Title>
@@ -82,7 +111,6 @@ class Roster extends React.Component {
                     className="form-control"
                     id="name"
                     defaultValue={details.name}
-                    // value= { player.name }
                     onChange={this.nameChange}
                   />
                 </div>
@@ -152,17 +180,6 @@ class Roster extends React.Component {
           </Modal>
         </div>
       </div>
-
-      // <div>
-      //   <Button>
-      //     <Panel>
-      //       <Panel.Body>
-      //         <img className="media-object" src={details.image} alt="..." />
-      //         <h4 className="media-heading">{details.name}</h4>
-      //       </Panel.Body>
-      //     </Panel>
-      //   </Button>
-      // </div>
     );
   }
 }
