@@ -4,8 +4,8 @@ import teamsRequest from "../../firebaseRequests/teams";
 import authRequest from "../../firebaseRequests/auth";
 import playersRequest from "../../firebaseRequests/players";
 import Starters from "../Starters/Starters";
-import {Modal, Button} from 'react-bootstrap';
 import Roster from "../Roster/Roster";
+
 import "./MyTeam.css";
 
 class MyTeam extends React.Component {

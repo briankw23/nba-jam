@@ -1,5 +1,5 @@
 import React from "react";
-import { Panel, Button, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import playersRequest from "../../firebaseRequests/players";
 
 const defaultPlayer = {
@@ -39,7 +39,7 @@ class Roster extends React.Component {
     playersRequest
       .putRequest(firebaseId, this.state.updatePlayer)
       .then(() => {
-        this.setState({show: false });
+        this.props.history.push('/myTeam');
       })
       .catch((err) => {
         console.error('error with update player', err);
@@ -53,7 +53,7 @@ class Roster extends React.Component {
     playersRequest
       .deleteRequest(firebaseId)
       .then(() => {
-        this.setState({show: false });
+        this.props.history.push('/myTeam');
       })
       .catch((err) => {
         console.error('error with delete player', err);
@@ -116,10 +116,8 @@ class Roster extends React.Component {
               key={details.id}
               onClick={this.handleShow}
             >
-              <Panel>
-                <img className="media-object" src={details.image} alt="..." />
-                <h4 className="media-heading">{details.name}</h4>
-              </Panel>
+              <img className="media-object" src={details.image} alt="..." />
+              <h4 className="media-heading">{details.name}</h4>
             </Button>
           </div>
           <Modal show={this.state.show} onHide={this.handleClose}>
