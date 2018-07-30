@@ -17,14 +17,10 @@ class Roster extends React.Component {
   state = {
     updatePlayer: defaultPlayer,
     show: false,
-    // id: '',
   }
 
   playerClickEvent = (e, idz) => {
-    // this.setState({id: idz });
-
     console.error('player clicked', idz);
-    // e.preventDefault();
     playersRequest
       .getRequestSinglePlayer(idz)
       .then(player => {
@@ -33,6 +29,20 @@ class Roster extends React.Component {
       })
       .catch(err => {
         console.error("error getting single player", err);
+      });
+  };
+
+  updatePlayerClick = (e, idz) => {
+    console.error (e, 'clicked update');
+    const firebaseId = idz;
+    console.error(firebaseId);
+    playersRequest
+      .putRequest(firebaseId, this.state.updatePlayer)
+      .then(() => {
+        this.setState({show: false });
+      })
+      .catch((err) => {
+        console.error('error with update player', err);
       });
   };
 
@@ -85,22 +95,22 @@ class Roster extends React.Component {
     return (
       <div>
         <div>
-          <Button
-            bsStyle="primary"
-            bsSize="large"
-            key={details.id}
-            onClick={this.handleShow}
-          >
-            <Panel
-              onClick={(e) => this.playerClickEvent(e, details.id)}
+          <div onClick={(e) => this.playerClickEvent(e, details.id)}>
+            <Button
+              bsStyle="primary"
+              bsSize="large"
+              key={details.id}
+              onClick={this.handleShow}
             >
-              <img className="media-object" src={details.image} alt="..." />
-              <h4 className="media-heading">{details.name}</h4>
-            </Panel>
-          </Button>
+              <Panel>
+                <img className="media-object" src={details.image} alt="..." />
+                <h4 className="media-heading">{details.name}</h4>
+              </Panel>
+            </Button>
+          </div>
           <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
+              <Modal.Title>Player Profile</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <form action="" onSubmit={this.submitPlayerEvent}>
@@ -169,8 +179,11 @@ class Roster extends React.Component {
                     onChange={this.threePointerChange}
                   />
                 </div>
-                <button type="submit" className="btn btn-success">
+                <button type="button" onClick={(e) => this.updatePlayerClick(e, details.id)} className="btn btn-success">
                   Update
+                </button>
+                <button type="submit" className="btn btn-success">
+                  Delete
                 </button>
               </form>
             </Modal.Body>
