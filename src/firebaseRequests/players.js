@@ -20,14 +20,14 @@ const getRequestRoster = (id) => {
     axios
       .get(`${constants.firebaseConfig.databaseURL}/players.json?orderBy="teamId"&equalTo="${id}"`)
       .then((res) => {
-        const player = [];
+        const players = [];
         if (res.data !== null) {
           Object.keys(res.data).forEach(fbKey => {
             res.data[fbKey].id = fbKey;
-            player.push(res.data[fbKey]);
+            players.push(res.data[fbKey]);
           });
         }
-        resolve(player);
+        resolve(players);
       })
       .catch((err) => {
         reject(err);
@@ -35,4 +35,17 @@ const getRequestRoster = (id) => {
   });
 };
 
-export default {  postRequest, getRequestRoster };
+const putRequest = (playerId, updatedPlayer) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .put(`${constants.firebaseConfig.databaseURL}/players/${playerId}.json`, updatedPlayer)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+export default {  postRequest, getRequestRoster, putRequest };

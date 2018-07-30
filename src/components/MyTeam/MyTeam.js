@@ -5,30 +5,15 @@ import authRequest from "../../firebaseRequests/auth";
 import playersRequest from "../../firebaseRequests/players";
 import Starters from "../Starters/Starters";
 import {Modal, Button} from 'react-bootstrap';
-
+import Roster from "../Roster/Roster";
 import "./MyTeam.css";
 
 class MyTeam extends React.Component {
   state = {
     myTeam: [],
     roster: [],
-    playerId: -1,
-    show: false,
   };
 
-  handleClose = () => {
-    this.setState({show: false });
-  }
-
-  handleShow = () => {
-    this.setState({show: true });
-  }
-
-  playerSelectEvent = id => {
-    this.setState({
-      playerId: id
-    });
-  };
   componentDidMount () {
     teamsRequest
       .getRequestOneTeam(authRequest.getUid())
@@ -55,47 +40,12 @@ class MyTeam extends React.Component {
       );
     });
     const rosterComponents = this.state.roster.map(player => {
-      const playerCardClickEvent = () => {
-        this.playerSelectEvent(player.Id);
-        // this.props.history.push(`/myTeam/${player.id}`);
-      };
       return (
-        // <button
-        //   key={player.id}
-        //   onClick={playerCardClickEvent}
-        // >
-        //   <div className="Roster" >
-        //     <div className="media" >
-        //       <div className="media-left">
-        // <img className="media-object" src={player.image} alt="..." />
-        // <h4 className="media-heading">{player.name}</h4>
-        //       </div>
-        //       <div className="media-body">
-
-        //       </div>
-        //     </div>
-        //   </div>
-        // </button>
-        // Button and Modal for Player
-        <div>
-          <Button bsStyle="primary" bsSize="large"
-            onClick={playerCardClickEvent}
-            onClick={this.handleShow}>
-            Launch demo modal
-          </Button>
-
-          <Modal show={this.state.show} onHide={this.handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={this.handleClose}>Close</Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
+        <Roster
+          key={player.id}
+          index={player.id}
+          details= {player}
+        />
       );
     });
     return (
