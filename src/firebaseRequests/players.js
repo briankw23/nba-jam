@@ -20,14 +20,14 @@ const getRequestRoster = (id) => {
     axios
       .get(`${constants.firebaseConfig.databaseURL}/players.json?orderBy="teamId"&equalTo="${id}"`)
       .then((res) => {
-        const player = [];
+        const players = [];
         if (res.data !== null) {
           Object.keys(res.data).forEach(fbKey => {
             res.data[fbKey].id = fbKey;
-            player.push(res.data[fbKey]);
+            players.push(res.data[fbKey]);
           });
         }
-        resolve(player);
+        resolve(players);
       })
       .catch((err) => {
         reject(err);
@@ -35,4 +35,43 @@ const getRequestRoster = (id) => {
   });
 };
 
-export default {  postRequest, getRequestRoster };
+const getRequestSinglePlayer = (id) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${constants.firebaseConfig.databaseURL}/players/${id}.json`)
+      .then(res => {
+        resolve(res.data);
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+};
+
+const putRequest = (playerId, updatedPlayer) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .put(`${constants.firebaseConfig.databaseURL}/players/${playerId}.json`, updatedPlayer)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+const deleteRequest = (playerId) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .delete(`${constants.firebaseConfig.databaseURL}/players/${playerId}.json`)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+export default {  postRequest, getRequestRoster, putRequest, getRequestSinglePlayer, deleteRequest };
