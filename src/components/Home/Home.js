@@ -6,6 +6,8 @@ import playersRequest from '../../firebaseRequests/players';
 import { Button } from 'react-bootstrap';
 
 import './Home.css';
+import PlayerOne from '../PlayerOne/PlayerOne';
+import PlayerTwo from '../PlayerTwo/PlayerTwo';
 
 class Home extends React.Component {
 
@@ -13,7 +15,7 @@ class Home extends React.Component {
     teams: [],
     playerOneRoster: [],
     playerTwoRoster: [],
-    playerInContext: 0,
+    playerInContext: 1,
   }
 
   componentDidMount () {
@@ -23,7 +25,7 @@ class Home extends React.Component {
         this.setState({ teams });
       })
       .catch((err) => {
-        console.error('error getting teams');
+        console.error(err,'error getting teams');
       });
   }
 
@@ -32,12 +34,22 @@ class Home extends React.Component {
     playersRequest
       .getRequestRoster(id)
       .then(roster => {
-        this.setState({ playerOneRoster: roster });
-        console.error(roster);
+        this.state.playerInContext === 1 ? this.setState({ playerOneRoster: roster }) : this.setState({ playerTwoRoster: roster });
       })
       .catch(err => {
         console.error("error getting teams", err);
       });
+  }
+
+  checkPlayer = () => {
+
+  }
+
+  playerOneInContext = () => {
+    this.setState({ playerInContext: 1});
+  }
+  playerTwoInContext = () => {
+    this.setState({ playerInContext: 2});
   }
 
   render () {
@@ -47,6 +59,28 @@ class Home extends React.Component {
     //     <li className="Teams col-sm-3" key={team.id} index={team.id}>{team.name}</li>
     //   );
     // });
+
+    const playerOneComponents = this.state.playerOneRoster.map((player) => {
+      return (
+        <PlayerOne
+          redirectToMyTeam= {this.redirectToMyTeam}
+          key={player.id}
+          index={player.id}
+          details= {player}
+        />
+      );
+    });
+
+    const playerTwoComponents = this.state.playerTwoRoster.map((player) => {
+      return (
+        <PlayerTwo
+          redirectToMyTeam= {this.redirectToMyTeam}
+          key={player.id}
+          index={player.id}
+          details= {player}
+        />
+      );
+    });
 
     const eastComponents = this.state.teams.filter((team) => {
       return team.confId === 0;
@@ -67,7 +101,6 @@ class Home extends React.Component {
         </Button>
       );
     });
-
     return (
       <div className="">
         <div className="container">
@@ -95,10 +128,12 @@ class Home extends React.Component {
           {/* Second Row */}
           <div className="row bottom">
             <div className="col-sm-6">
-              <Button>Player 1</Button>
+              <Button onClick={this.playerOneInContext}>Player 1</Button>
+              { playerOneComponents}
             </div>
             <div className="col-sm-6">
-              <Button>Player 2</Button>
+              <Button onClick={this.playerTwoInContext}>Player 2</Button>
+              { playerTwoComponents }
             </div>
           </div>
         </div>
