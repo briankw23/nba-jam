@@ -85,74 +85,76 @@ class CreatePlayer extends React.Component {
   render () {
     const { newPlayer } = this.state;
     return (
-      <div className="CreatePlayer">
-        <h1>Create Player</h1>
-        <form action="" onSubmit={this.submitPlayerEvent} >
-          <div className="form-group">
-            <label>Name:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              placeholder="Player Name"
-              value= { newPlayer.name }
-              onChange = { this.nameChange }
-            />
-          </div>
-          <div className="form-group">
-            <label>Image:</label>
-            <input type="text"
-              className="form-control"
-              id="image"
-              placeholder="Image URL"
-              value= { newPlayer.image }
-              onChange = { this.imageChange }
-            />
-          </div>
-          <div className="form-group">
-            <label>Defense:</label>
-            <input type="number"
-              className="form-control"
-              id="defense"
-              placeholder="0 to 100"
-              value= { newPlayer.defense }
-              onChange = { this.defenseChange }
-            />
-          </div>
-          <div className="form-group">
-            <label>Dunks:</label>
-            <input type="number"
-              className="form-control"
-              id="dunks"
-              placeholder="0 to 100"
-              value= { newPlayer.dunks }
-              onChange = { this.dunksChange }
-            />
-          </div>
-          <div className="form-group">
-            <label>Speed:</label>
-            <input type="number"
-              className="form-control"
-              id="speed"
-              placeholder="0 to 100"
-              value= { newPlayer.speed }
-              onChange = { this.speedChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>Three Pointers:</label>
-            <input type="number"
-              className="form-control"
-              id="threePointer"
-              placeholder="0 to 100"
-              value= { newPlayer.threePointer }
-              onChange = { this.threePointerChange }
-            />
-          </div>
-          <button type="submit" className="btn btn-success">
-            Submit
-          </button>
-        </form>
+      <div className="CreatePlayer panel panel-default">
+        <div>
+          <h1>Create Player</h1>
+          <form action="" onSubmit={this.submitPlayerEvent} >
+            <div className="form-group">
+              <label>Name:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                placeholder="Player Name"
+                value= { newPlayer.name }
+                onChange = { this.nameChange }
+              />
+            </div>
+            <div className="form-group">
+              <label>Image:</label>
+              <input type="text"
+                className="form-control"
+                id="image"
+                placeholder="Image URL"
+                value= { newPlayer.image }
+                onChange = { this.imageChange }
+              />
+            </div>
+            <div className="form-group">
+              <label>Defense:</label>
+              <input type="number"
+                className="form-control"
+                id="defense"
+                placeholder="0 to 100"
+                value= { newPlayer.defense }
+                onChange = { this.defenseChange }
+              />
+            </div>
+            <div className="form-group">
+              <label>Dunks:</label>
+              <input type="number"
+                className="form-control"
+                id="dunks"
+                placeholder="0 to 100"
+                value= { newPlayer.dunks }
+                onChange = { this.dunksChange }
+              />
+            </div>
+            <div className="form-group">
+              <label>Speed:</label>
+              <input type="number"
+                className="form-control"
+                id="speed"
+                placeholder="0 to 100"
+                value= { newPlayer.speed }
+                onChange = { this.speedChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Three Pointers:</label>
+              <input type="number"
+                className="form-control"
+                id="threePointer"
+                placeholder="0 to 100"
+                value= { newPlayer.threePointer }
+                onChange = { this.threePointerChange }
+              />
+            </div>
+            <button type="submit" className="btn btn-success">
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

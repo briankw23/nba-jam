@@ -16,6 +16,7 @@ class Home extends React.Component {
     playerOneRoster: [],
     playerTwoRoster: [],
     playerInContext: 1,
+    teamClickOn: '',
   }
 
   componentDidMount () {
@@ -35,14 +36,11 @@ class Home extends React.Component {
       .getRequestRoster(id)
       .then(roster => {
         this.state.playerInContext === 1 ? this.setState({ playerOneRoster: roster }) : this.setState({ playerTwoRoster: roster });
+        this.setState({ teamClickOn: id});
       })
       .catch(err => {
-        console.error("error getting teams", err);
+        console.error('error getting teams', err);
       });
-  }
-
-  checkPlayer = () => {
-
   }
 
   playerOneInContext = () => {
@@ -63,7 +61,6 @@ class Home extends React.Component {
     const playerOneComponents = this.state.playerOneRoster.map((player) => {
       return (
         <PlayerOne
-          redirectToMyTeam= {this.redirectToMyTeam}
           key={player.id}
           index={player.id}
           details= {player}
@@ -71,10 +68,31 @@ class Home extends React.Component {
       );
     });
 
+    // const playerOneTeamImage = this.state.teams.filter((team) => {
+    //   return team.id === this.state.teamClickOn && this.state.playerInContext === 1;
+    // }).map((team) => {
+    //   return (
+    //     <div>
+    //       <h1>{team.name}</h1>
+    //       <img className="col-sm-6" src={team.image} alt=""/>
+    //     </div>
+    //   );
+    // });
+
+    // const playerTwoTeamImage = this.state.teams.filter((team) => {
+    //   return team.id === this.state.teamClickOn && this.state.playerInContext === 2;
+    // }).map((team) => {
+    //   return (
+    //     <div>
+    //       <h1>{team.name}</h1>
+    //       <img className="col-sm-6" src={team.image} alt=""/>
+    //     </div>
+    //   );
+    // });
+
     const playerTwoComponents = this.state.playerTwoRoster.map((player) => {
       return (
         <PlayerTwo
-          redirectToMyTeam= {this.redirectToMyTeam}
           key={player.id}
           index={player.id}
           details= {player}
@@ -86,8 +104,10 @@ class Home extends React.Component {
       return team.confId === 0;
     }).map((team) => {
       return (
-        <Button onClick={(e) => this.teamClickEvent(e, team.id)} key={team.id}>
-          <li className="Teams col-sm-2" key={team.id} index={team.id}>{team.name}</li>
+        <Button className="col-md-6" onClick={(e) => this.teamClickEvent(e, team.id)} key={team.id}>
+          <li className="Teams col-sm-2" key={team.id} index={team.id}>
+            <h4>{team.name}</h4>
+          </li>
         </Button>
       );
     });
@@ -96,8 +116,12 @@ class Home extends React.Component {
       return team.confId === 1;
     }).map((team) => {
       return (
-        <Button onClick={(e) => this.teamClickEvent(e, team.id)} key={team.id}>
-          <li className="Teams col-sm-2" key={team.id} index={team.id}>{team.name}</li>
+        <Button className="col-md-6" onClick={(e) => this.teamClickEvent(e, team.id)} key={team.id}>
+          <li className="Teams col-sm-2" key={team.id} index={team.id}>
+            <h4>
+              {team.name}
+            </h4>
+          </li>
         </Button>
       );
     });
@@ -106,34 +130,42 @@ class Home extends React.Component {
         <div className="container">
           <div className="row top">
             {/* East Section */}
-            <div className="col-sm-2">
+            <div className="col-sm-1">
               <h2 className="East">East</h2>
             </div>
 
             {/* Teams */}
-            <div className="col-sm-4">
+            <div className="col-sm-5">
               {eastComponents}
             </div>
 
-            <div className="col-sm-4">
+            <div className="col-sm-5">
               {westComponents}
             </div>
 
             {/* West Section */}
-            <div className="col-sm-2">
+            <div className="col-sm-1">
               <h2 className="West">West</h2>
             </div>
-
           </div>
           {/* Second Row */}
           <div className="row bottom">
             <div className="col-sm-6">
-              <Button onClick={this.playerOneInContext}>Player 1</Button>
-              { playerOneComponents}
+              <Button className="col-sm-12 playerButton" onClick={this.playerOneInContext}>Player 1</Button>
+              {/* {playerOneTeamImage} */}
             </div>
             <div className="col-sm-6">
-              <Button onClick={this.playerTwoInContext}>Player 2</Button>
-              { playerTwoComponents }
+              <Button className="col-sm-12 playerButton" onClick={this.playerTwoInContext}>Player 2</Button>
+              {/* {playerTwoTeamImage} */}
+            </div>
+            {/* Third Row */}
+            <div className="row bottom">
+              <div className="col-sm-6">
+                { playerOneComponents}
+              </div>
+              <div className="col-sm-6">
+                { playerTwoComponents }
+              </div>
             </div>
           </div>
         </div>

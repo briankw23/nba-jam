@@ -1,13 +1,17 @@
 import React from 'react';
-import { Button, Modal, Media } from "react-bootstrap";
+import { Button, Media } from 'react-bootstrap';
 
 import './PlayerOne.css';
 
 class PlayerOne extends React.Component {
+  componentDidMount () {
+    console.error('props',this.props);
+  }
   render () {
     const { details } = this.props;
     return (
       <div>
+
         <Button
           bsStyle="primary"
           bsSize="large"

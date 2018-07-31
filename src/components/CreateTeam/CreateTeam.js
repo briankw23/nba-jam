@@ -46,40 +46,42 @@ class CreateTeam extends React.Component {
   render () {
     const { newTeam } = this.state;
     return (
-      <div className="CreateTeam">
-        <h2 className="text-center">Create Team:</h2>
-        <form onSubmit={this.submitTeamEvent}>
-          <div className="">
-            <fieldset className="">
-              <label htmlFor="Team Name">Team Name:</label>
-              <br />
-              <input
-                className=""
-                type="text"
-                id="name"
-                placeholder="Flint Tropics"
-                value={newTeam.name}
-                onChange={this.nameChange}
-              />
-            </fieldset>
+      <div className="CreateTeam  panel panel-default">
+        <div>
+          <h2 className="text-center">Create Team:</h2>
+          <form onSubmit={this.submitTeamEvent}>
+            <div className="">
+              <fieldset className="">
+                <label htmlFor="Team Name">Team Name:</label>
+                <br />
+                <input
+                  className="form-control"
+                  type="text"
+                  id="name"
+                  placeholder="Flint Tropics"
+                  value={newTeam.name}
+                  onChange={this.nameChange}
+                />
+              </fieldset>
 
-            <fieldset className="">
-              <label htmlFor="Team Name">Team Logo</label>
-              <br />
-              <input
-                className=""
-                type="text"
-                id="image"
-                placeholder="https://www.spreadshirt.com/image-server/v1/mp/designs/11637207,width=178,height=178/flint-tropics.png"
-                value={newTeam.image}
-                onChange={this.imageChange}
-              />
-            </fieldset>
-            <button type="submit" className="btn btn-success">
-            Submit
-            </button>
-          </div>
-        </form>
+              <fieldset className="">
+                <label htmlFor="Team Name">Team Logo</label>
+                <br />
+                <input
+                  className="form-control"
+                  type="text"
+                  id="image"
+                  placeholder="https://www.spreadshirt.com/image-server/v1/mp/designs/11637207,width=178,height=178/flint-tropics.png"
+                  value={newTeam.image}
+                  onChange={this.imageChange}
+                />
+              </fieldset>
+              <button type="submit" className="btn btn-success">
+              Submit
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
