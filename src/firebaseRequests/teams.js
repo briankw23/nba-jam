@@ -41,6 +41,7 @@ const getRequestOneTeam = (uid) => {
       });
   });
 };
+
 const postRequest = (newTeam) => {
   return new Promise((resolve, reject) => {
     axios
