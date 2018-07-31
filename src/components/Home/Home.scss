@@ -1,17 +1,12 @@
 .top{
   background-color: white;
 }
-
-.bottom{
-  background-color: skyblue;
-}
 .Teams{
   list-style: none;
 }
 .East{
   writing-mode: vertical-rl;
   text-orientation: upright;
-  text-align: left;
   font-family: 'Press Start 2P', cursive;
   font-size: 50px;
 }
@@ -20,6 +15,10 @@
   text-orientation: upright;
   font-family: 'Press Start 2P', cursive;
   font-size: 50px;
-  text-align: center;
-  text-align: right;
+}
+
+.playerButton{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

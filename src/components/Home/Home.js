@@ -151,11 +151,11 @@ class Home extends React.Component {
           {/* Second Row */}
           <div className="row bottom">
             <div className="col-sm-6">
-              <Button onClick={this.playerOneInContext}>Player 1</Button>
+              <Button className="col-sm-12 playerButton" onClick={this.playerOneInContext}>Player 1</Button>
               {/* {playerOneTeamImage} */}
             </div>
             <div className="col-sm-6">
-              <Button onClick={this.playerTwoInContext}>Player 2</Button>
+              <Button className="col-sm-12 playerButton" onClick={this.playerTwoInContext}>Player 2</Button>
               {/* {playerTwoTeamImage} */}
             </div>
             {/* Third Row */}
