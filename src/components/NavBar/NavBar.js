@@ -26,7 +26,7 @@ class NavBar extends React.Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link to="/" className="navbar-brand">Arcade</Link>
+              <Link to="/"><img className="jamLogo" alt="Brand" src="https://orig00.deviantart.net/2104/f/2017/263/0/6/nba_jam_vector_logo__1993__by_imleerobson-dalsz3s.png"/></Link>
             </div>
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
