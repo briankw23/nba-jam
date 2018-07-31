@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 
-import teamsRequest from "../../firebaseRequests/teams";
-import playersRequest from "../../firebaseRequests/players";
+import teamsRequest from '../../firebaseRequests/teams';
+import playersRequest from '../../firebaseRequests/players';
 
-import { Button } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
 
-import "./Home.css";
-import PlayerOne from "../PlayerOne/PlayerOne";
-import PlayerTwo from "../PlayerTwo/PlayerTwo";
+import './Home.css';
+import PlayerOne from '../PlayerOne/PlayerOne';
+import PlayerTwo from '../PlayerTwo/PlayerTwo';
 
 class Home extends React.Component {
   state = {
     teams: [],
     playerOneRoster: [],
     playerTwoRoster: [],
-    playerOneTeamImage: "",
-    playerTwoTeamImage: "",
+    playerOneTeamImage: '',
+    playerTwoTeamImage: '',
     playerInContext: 1,
-    teamClickOn: "",
+    teamClickOn: '',
   };
 
   componentDidMount () {
@@ -27,7 +27,7 @@ class Home extends React.Component {
         this.setState({ teams });
       })
       .catch(err => {
-        console.error(err, "error getting teams");
+        console.error(err, 'error getting teams');
       });
   }
 
@@ -45,7 +45,7 @@ class Home extends React.Component {
 
       })
       .catch(err => {
-        console.error("error getting teams", err);
+        console.error('error getting teams', err);
       });
   };
 
@@ -71,9 +71,12 @@ class Home extends React.Component {
       return team.id === this.state.playerOneTeamImage;
     }).map((team) => {
       return (
-        <div>
-          <h1>{team.name}</h1>
-          <img className="col-sm-6" src={team.image} alt=""/>
+        <div class="row" key={team.id}>
+          <div class="col-sm-12">
+            <div class="thumbnail">
+              <img src={team.image} alt="..."/>
+            </div>
+          </div>
         </div>
       );
     });
@@ -82,9 +85,12 @@ class Home extends React.Component {
       return team.id === this.state.playerTwoTeamImage;
     }).map((team) => {
       return (
-        <div>
-          <h1>{team.name}</h1>
-          <img className="col-sm-6" src={team.image} alt=""/>
+        <div class="row" key={team.id}>
+          <div class="col-sm-12">
+            <div class="thumbnail">
+              <img src={team.image} alt="..."/>
+            </div>
+          </div>
         </div>
       );
     });
@@ -151,7 +157,7 @@ class Home extends React.Component {
           <div className="row bottom">
             <div className="col-sm-6">
               <Button
-                className="col-sm-12 playerButton"
+                className="col-sm-12 playerButton btn-success"
                 onClick={this.playerOneInContext}
               >
                 Player 1
@@ -160,7 +166,7 @@ class Home extends React.Component {
             </div>
             <div className="col-sm-6">
               <Button
-                className="col-sm-12 playerButton"
+                className="col-sm-12 playerButton btn-success"
                 onClick={this.playerTwoInContext}
               >
                 Player 2
