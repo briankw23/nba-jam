@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import teamsRequest from "../../firebaseRequests/teams";
-import authRequest from "../../firebaseRequests/auth";
-import playersRequest from "../../firebaseRequests/players";
-import Starters from "../Starters/Starters";
-import Roster from "../Roster/Roster";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import teamsRequest from '../../firebaseRequests/teams';
+import authRequest from '../../firebaseRequests/auth';
+import playersRequest from '../../firebaseRequests/players';
+import Starters from '../Starters/Starters';
+import Roster from '../Roster/Roster';
 
-import "./MyTeam.css";
+import './MyTeam.css';
 
 class MyTeam extends React.Component {
   state = {
@@ -26,7 +26,7 @@ class MyTeam extends React.Component {
         });
       })
       .catch(err => {
-        console.error("error getting teams", err);
+        console.error('error getting teams', err);
       });
   }
 
@@ -42,7 +42,7 @@ class MyTeam extends React.Component {
         });
       })
       .catch(err => {
-        console.error("error getting teams", err);
+        console.error('error getting teams', err);
       });
   };
 
@@ -68,7 +68,7 @@ class MyTeam extends React.Component {
     return (
       <div className="MyTeam">
         <button>
-          <Link to="/createTeam">Create/Edit Team</Link>
+          <Link to="/createTeam">Create Team</Link>
         </button>
         <button>
           <Link to="/createPlayer">Create Player</Link>
