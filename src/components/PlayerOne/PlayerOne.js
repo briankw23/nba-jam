@@ -11,7 +11,6 @@ class PlayerOne extends React.Component {
     const { details } = this.props;
     return (
       <div>
-
         <Button
           bsStyle="primary"
           bsSize="large"

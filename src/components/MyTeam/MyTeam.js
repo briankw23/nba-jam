@@ -48,11 +48,11 @@ class MyTeam extends React.Component {
   render () {
     const myTeam = this.state.myTeam.map(team => {
       return (
-        <div class="row" key={team.id}>
-          <div class="col-sm-8 col-md-6">
-            <div class="thumbnail">
+        <div classNmae="row" key={team.id}>
+          <div className="col-sm-6 col-md-offset-3">
+            <div className="thumbnail">
               <img src={team.image} alt="..."/>
-              <div class="caption">
+              <div className="caption">
                 <h3>{team.name}</h3>
               </div>
             </div>
