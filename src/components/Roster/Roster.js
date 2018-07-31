@@ -1,6 +1,6 @@
-import React from "react";
-import { Button, Modal, Media } from "react-bootstrap";
-import playersRequest from "../../firebaseRequests/players";
+import React from 'react';
+import { Button, Modal, Media } from 'react-bootstrap';
+import playersRequest from '../../firebaseRequests/players';
 
 const defaultPlayer = {
   name: '',
@@ -28,7 +28,7 @@ class Roster extends React.Component {
         console.error(player);
       })
       .catch(err => {
-        console.error("error getting single player", err);
+        console.error('error getting single player', err);
       });
   };
 
@@ -116,7 +116,8 @@ class Roster extends React.Component {
               key={details.id}
               onClick={this.handleShow}
             >
-              <Media>
+              <Media className=''>
+
                 <Media.Left>
                   <img width={64} height={64} src={details.image} alt="thumbnail" />
                 </Media.Left>
