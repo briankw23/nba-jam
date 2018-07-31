@@ -20,7 +20,7 @@ class Home extends React.Component {
     teamClickOn: "",
   };
 
-  componentDidMount() {
+  componentDidMount () {
     teamsRequest
       .getRequest()
       .then(teams => {
@@ -56,8 +56,6 @@ class Home extends React.Component {
     this.setState({ playerInContext: 2 });
   };
 
-
-
   render () {
     // const teamsComponents = this.state.teams.map((team) => {
     //   return (
@@ -69,27 +67,27 @@ class Home extends React.Component {
       return <PlayerOne key={player.id} index={player.id} details={player} />;
     });
 
-    // const playerTwoTeamImage = this.state.teams.filter((team) => {
-    //   return team.id === this.state.teamClickOn && this.state.playerInContext === 2;
-    // }).map((team) => {
-    //   return (
-    //     <div>
-    //       <h1>{team.name}</h1>
-    //       <img className="col-sm-6" src={team.image} alt=""/>
-    //     </div>
-    //   );
-    // });
+    const playerOneTeamLogo = this.state.teams.filter((team) => {
+      return team.id === this.state.playerOneTeamImage;
+    }).map((team) => {
+      return (
+        <div>
+          <h1>{team.name}</h1>
+          <img className="col-sm-6" src={team.image} alt=""/>
+        </div>
+      );
+    });
 
-    // const playerTwoTeamImage = this.state.teams.filter((team) => {
-    //   return team.id === this.state.teamClickOn && this.state.playerInContext === 2;
-    // }).map((team) => {
-    //   return (
-    //     <div>
-    //       <h1>{team.name}</h1>
-    //       <img className="col-sm-6" src={team.image} alt=""/>
-    //     </div>
-    //   );
-    // });
+    const playerTwoTeamLogo = this.state.teams.filter((team) => {
+      return team.id === this.state.playerTwoTeamImage;
+    }).map((team) => {
+      return (
+        <div>
+          <h1>{team.name}</h1>
+          <img className="col-sm-6" src={team.image} alt=""/>
+        </div>
+      );
+    });
 
     const playerTwoComponents = this.state.playerTwoRoster.map(player => {
       return <PlayerTwo key={player.id} index={player.id} details={player} />;
@@ -172,9 +170,13 @@ class Home extends React.Component {
             {/* Third Row */}
             <div className="row bottom">
               <div className="col-sm-6">
+                {playerOneTeamLogo}
                 {playerOneComponents}
               </div>
-              <div className="col-sm-6">{playerTwoComponents}</div>
+              <div className="col-sm-6">
+                {playerTwoTeamLogo}
+                {playerTwoComponents}
+              </div>
             </div>
           </div>
         </div>
