@@ -55,4 +55,30 @@ const postRequest = (newTeam) => {
   });
 };
 
-export default { getRequest, postRequest, getRequestOneTeam };
+const putRequest = (teamId, updatedTeam) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .put(`${constants.firebaseConfig.databaseURL}/teams/${teamId}.json`, updatedTeam)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+const deleteRequest = (teamId) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .delete(`${constants.firebaseConfig.databaseURL}/teams/${teamId}.json`)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+export default { getRequest, postRequest, getRequestOneTeam, putRequest, deleteRequest };

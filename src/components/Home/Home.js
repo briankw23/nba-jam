@@ -3,7 +3,7 @@ import React from 'react';
 import teamsRequest from '../../firebaseRequests/teams';
 import playersRequest from '../../firebaseRequests/players';
 
-import { Button } from 'react-bootstrap';
+import { Button, ProgressBar } from 'react-bootstrap';
 
 import './Home.css';
 import PlayerOne from '../PlayerOne/PlayerOne';
@@ -75,6 +75,48 @@ class Home extends React.Component {
           <div class="col-sm-12">
             <div class="thumbnail">
               <img src={team.image} alt="..."/>
+            </div>
+          </div>
+        </div>
+      );
+    });
+
+    const playerOneCards = this.state.playerOneRoster.filter((player) => {
+      return player.starter === true;
+    }).map((player) => {
+      return (
+        <div className="row">
+          <div className="col-sm-3">
+            <div className="thumbnail">
+              <img src={player.image} alt="player imaghe"/>
+              <div className="caption">
+                <h3>{player.name}</h3>
+                <ProgressBar now={player.speed}  label={`SPEED`} />
+                <ProgressBar now={player.threePointer}  label={`3 PTRS`} />
+                <ProgressBar now={player.dunks}  label={`DUNKS`} />
+                <ProgressBar now={player.defense}  label={`DEF`} />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+
+    const playerTwoCards = this.state.playerTwoRoster.filter((player) => {
+      return player.starter === true;
+    }).map((player) => {
+      return (
+        <div className="row">
+          <div className="col-sm-3">
+            <div className="thumbnail">
+              <img src={player.image} alt="player imaghe"/>
+              <div className="caption">
+                <h3>{player.name}</h3>
+                <ProgressBar now={player.speed}  label={`SPEED`} />
+                <ProgressBar now={player.threePointer}  label={`3 PTRS`} />
+                <ProgressBar now={player.dunks}  label={`DUNKS`} />
+                <ProgressBar now={player.defense}  label={`DEF`} />
+              </div>
             </div>
           </div>
         </div>
@@ -174,13 +216,16 @@ class Home extends React.Component {
               {/* {playerTwoTeamImage} */}
             </div>
             {/* Third Row */}
-            <div className="row bottom">
+            <div className="row">
               <div className="col-sm-6">
                 {playerOneTeamLogo}
+                {playerOneCards}
                 {playerOneComponents}
               </div>
+
               <div className="col-sm-6">
                 {playerTwoTeamLogo}
+                {playerTwoCards}
                 {playerTwoComponents}
               </div>
             </div>

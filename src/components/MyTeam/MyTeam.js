@@ -4,6 +4,7 @@ import teamsRequest from '../../firebaseRequests/teams';
 import authRequest from '../../firebaseRequests/auth';
 import playersRequest from '../../firebaseRequests/players';
 import Roster from '../Roster/Roster';
+import { Button, Modal} from 'react-bootstrap';
 
 import './MyTeam.css';
 
@@ -11,6 +12,8 @@ class MyTeam extends React.Component {
   state = {
     myTeam: [],
     roster: [],
+    updateTeam: {},
+    show: false,
   };
 
   componentDidMount () {
@@ -45,18 +48,145 @@ class MyTeam extends React.Component {
       });
   };
 
+  handleClose = () => {
+    this.setState({show: false });
+  }
+
+  handleShow = () => {
+    this.setState({updateTeam: this.state.myTeam[0]});
+    this.setState({show: true });
+  }
+
+  formFieldStateString = (name, e) => {
+    const currentTeam = {...this.state.updateTeam};
+    currentTeam[name] = e.target.value;
+    this.setState({ updateTeam: currentTeam});
+  }
+
+  formFieldStateNumber = (name, e) => {
+    const currentTeam = {...this.state.updateTeam};
+    currentTeam[name] = e.target.value * 1;
+    this.setState({ updateTeam: currentTeam});
+  }
+
+  nameChange = (e) => {
+    this.formFieldStateString('name', e);
+  }
+
+  imageChange = (e) => {
+    this.formFieldStateString('image', e);
+  }
+  confChange = (e) => {
+    this.formFieldStateNumber('conf', e);
+  }
+
+  updateTeamClick = (e, idz) => {
+    console.error (e, 'clicked update');
+    const firebaseId = idz;
+    console.error(firebaseId);
+    teamsRequest
+      .putRequest(firebaseId, this.state.updateTeam)
+      .then(() => {
+        this.redirectToMyTeam();
+      })
+      .catch((err) => {
+        console.error('error with update team', err);
+      });
+  };
+
+  deleteTeamClick = (e, idz) => {
+    console.error (e, 'clicked delete');
+    const firebaseId = idz;
+    console.error(firebaseId);
+    teamsRequest
+      .deleteRequest(firebaseId)
+      .then(() => {
+        this.redirectToMyTeam();
+      })
+      .catch((err) => {
+        console.error('error with delete team', err);
+      });
+  };
+
   render () {
     const myTeam = this.state.myTeam.map(team => {
       return (
-        <div classNmae="row" key={team.id}>
-          <div className="col-sm-6 col-md-offset-3">
-            <div className="thumbnail">
-              <img src={team.image} alt="..."/>
-              <div className="caption">
-                <h3>{team.name}</h3>
+        <div>
+          <Button
+            className="col-sm-8 col-md-offset-2"
+            bsStyle="primary"
+            bsSize="large"
+            key={team.id}
+            onClick={this.handleShow}
+          >
+            <div className="row" key={team.id}>
+              <div>
+                <div className="thumbnail">
+                  <img src={team.image} alt="..."/>
+                  <div className="caption">
+                    <h3>{team.name}</h3>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </Button>
+
+          <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Player Profile</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <form action="" onSubmit={this.submitPlayerEvent}>
+                <div className="form-group">
+                  <label> Team Name:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="name"
+                    placeholder="Team Name"
+                    defaultValue={this.state.myTeam[0].name}
+                    onChange={this.nameChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label> Team Image:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="image"
+                    placeholder="Image URL"
+                    defaultValue={this.state.myTeam[0].image}
+                    onChange={this.imageChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Conference</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="conf"
+                    placeholder="0 to 100"
+                    defaultValue={this.state.myTeam[0].confId}
+                    onChange={this.confChange}
+                  />
+                </div>
+                <div onClick={this.handleClose}>
+                  <button type="button" onClick={(e) => this.updateTeamClick(e, team.id)} className="btn btn-success">
+                    Update
+                  </button>
+                </div>
+
+                <div onClick={this.handleClose}>
+                  <button type="button" onClick={(e) => this.deleteTeamClick(e, team.id)} className="btn btn-success">
+                    Delete
+                  </button>
+                </div>
+              </form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={this.handleClose}>Close</Button>
+            </Modal.Footer>
+          </Modal>
         </div>
       );
     });
