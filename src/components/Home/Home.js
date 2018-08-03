@@ -64,7 +64,12 @@ class Home extends React.Component {
     // });
 
     const playerOneComponents = this.state.playerOneRoster.map(player => {
-      return <PlayerOne key={player.id} index={player.id} details={player} />;
+      return (
+        < PlayerOne
+          key={player.id}
+          index={player.id}
+          details={player}
+        />);
     });
 
     const playerOneTeamLogo = this.state.teams.filter((team) => {
