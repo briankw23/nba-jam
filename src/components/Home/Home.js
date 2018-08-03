@@ -9,6 +9,17 @@ import './Home.css';
 import PlayerOne from '../PlayerOne/PlayerOne';
 import PlayerTwo from '../PlayerTwo/PlayerTwo';
 
+const defaultPlayer = {
+  name: '',
+  defense: '',
+  dunks: '',
+  image: '',
+  speed: '',
+  starter: false,
+  teamId: '',
+  threePointer: '',
+};
+
 class Home extends React.Component {
   state = {
     teams: [],
@@ -18,6 +29,8 @@ class Home extends React.Component {
     playerTwoTeamImage: '',
     playerInContext: 1,
     teamClickOn: '',
+    updatePlayer: defaultPlayer,
+    show: false,
   };
 
   componentDidMount () {
@@ -29,6 +42,14 @@ class Home extends React.Component {
       .catch(err => {
         console.error(err, 'error getting teams');
       });
+  }
+
+  handleClose = () => {
+    this.setState({show: false });
+  }
+
+  handleShow = () => {
+    this.setState({show: true });
   }
 
   teamClickEvent = (e, id) => {
