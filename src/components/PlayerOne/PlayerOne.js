@@ -44,7 +44,7 @@ class PlayerOne extends React.Component {
     playersRequest
       .putRequest(firebaseId, this.state.updatePlayer)
       .then(() => {
-        this.props.redirectToMyTeam();
+        console.error('player deleted');
       })
       .catch((err) => {
         console.error('error with update player', err);
@@ -58,7 +58,7 @@ class PlayerOne extends React.Component {
     playersRequest
       .deleteRequest(firebaseId)
       .then(() => {
-        this.props.redirectToMyTeam();
+        console.error('player updated');
       })
       .catch((err) => {
         console.error('error with delete player', err);
