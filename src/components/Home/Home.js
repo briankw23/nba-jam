@@ -186,17 +186,17 @@ class Home extends React.Component {
         <div className="container">
           <div className="row top">
             {/* East Section */}
-            <div className="col-sm-1">
+            <div className="col-md-1">
               <h2 className="East">East</h2>
             </div>
 
             {/* Teams */}
-            <div className="col-sm-5">{eastComponents}</div>
+            <div className="col-md-5">{eastComponents}</div>
 
-            <div className="col-sm-5">{westComponents}</div>
+            <div className="col-md-5">{westComponents}</div>
 
             {/* West Section */}
-            <div className="col-sm-1">
+            <div className="col-md-1">
               <h2 className="West">West</h2>
             </div>
           </div>
