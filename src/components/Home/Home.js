@@ -66,8 +66,8 @@ class Home extends React.Component {
         this.setState({ teamClickOn: id });
 
         this.state.playerInContext === 1 ? this.setState({ playerOneTeamImage: id }) : this.setState({ playerTwoTeamImage: id });
-        // this.state.playerInContext === 1 ? this.setState({ pOneStarterOne: []}) : this.setState({ pTwoStarterOne: []});
-        // this.state.playerInContext === 1 ? this.setState({ pOneStarterTwo: []}) : this.setState({ pTwoStarterTwo: []});
+        this.state.playerInContext === 1 ? this.setState({ pOneStarterOne: []}) : this.setState({ pTwoStarterOne: []});
+        this.state.playerInContext === 1 ? this.setState({ pOneStarterTwo: []}) : this.setState({ pTwoStarterTwo: []});
       })
       .catch(err => {
         console.error('error getting teams', err);
@@ -135,7 +135,7 @@ class Home extends React.Component {
         <div className="row" key={team.id}>
           <div className="col-sm-12">
             <div className="thumbnail">
-              <img src={team.image} alt="..."/>
+              <img className="teamCardImage" src={team.image} alt="..."/>
             </div>
           </div>
         </div>
@@ -147,7 +147,7 @@ class Home extends React.Component {
     }).map((player) => {
       return (
         <div>
-          <img src={player.image} alt="imageofplayer"/>
+          <img className="playerCardImage" src={player.image} alt="imageofplayer"/>
           <h4 className="skills">{player.name}</h4>
         </div>
       );
@@ -158,7 +158,7 @@ class Home extends React.Component {
     }).map((player) => {
       return (
         <div>
-          <img src={player.image} alt="imageofplayer"/>
+          <img className="playerCardImage" src={player.image} alt="imageofplayer"/>
           <h4 className="skills">{player.name}</h4>
         </div>
       );
@@ -262,9 +262,9 @@ class Home extends React.Component {
       return (
         <div className="col-sm-12">
           <div>
-            <div class="thumbnail">
+            <div className="thumbnail">
               <img src={player.image} alt="..."/>
-              <div class="caption">
+              <div className="caption">
                 <h5>{player.name}</h5>
               </div>
             </div>
@@ -279,9 +279,9 @@ class Home extends React.Component {
       return (
         <div className="col-sm-12">
           <div>
-            <div class="thumbnail">
+            <div className="thumbnail">
               <img src={player.image} alt="..."/>
-              <div class="caption">
+              <div className="caption">
                 <h5>{player.name}</h5>
               </div>
             </div>
@@ -296,9 +296,9 @@ class Home extends React.Component {
       return (
         <div className="col-sm-12">
           <div>
-            <div class="thumbnail">
+            <div className="thumbnail">
               <img src={player.image} alt="..."/>
-              <div class="caption">
+              <div className="caption">
                 <h5>{player.name}</h5>
               </div>
             </div>
@@ -313,9 +313,9 @@ class Home extends React.Component {
       return (
         <div className="col-sm-12">
           <div>
-            <div class="thumbnail">
+            <div className="thumbnail">
               <img src={player.image} alt="..."/>
-              <div class="caption">
+              <div className="caption">
                 <h5>{player.name}</h5>
               </div>
             </div>
@@ -342,24 +342,24 @@ class Home extends React.Component {
 
       return (
         <div>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow={player.speed} aria-valuemin="0" aria-valuemax="100" style={speed}>
-              <span class="sr-only">60% Complete</span>
+          <div className="progress">
+            <div className="progress-bar" role="progressbar" aria-valuenow={player.speed} aria-valuemin="0" aria-valuemax="100" style={speed}>
+              <span className="sr-only">60% Complete</span>
             </div>
           </div>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow={player.threePointer} aria-valuemin="0" aria-valuemax="100" style={threePointer}>
-              <span class="sr-only">60% Complete</span>
+          <div className="progress">
+            <div className="progress-bar" role="progressbar" aria-valuenow={player.threePointer} aria-valuemin="0" aria-valuemax="100" style={threePointer}>
+              <span className="sr-only">60% Complete</span>
             </div>
           </div>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow={player.dunks} aria-valuemin="0" aria-valuemax="100" style={dunks}>
-              <span class="sr-only">60% Complete</span>
+          <div className="progress">
+            <div className="progress-bar" role="progressbar" aria-valuenow={player.dunks} aria-valuemin="0" aria-valuemax="100" style={dunks}>
+              <span className="sr-only">60% Complete</span>
             </div>
           </div>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow={player.defense} aria-valuemin="0" aria-valuemax="100" style={defense}>
-              <span class="sr-only">60% Complete</span>
+          <div className="progress">
+            <div className="progress-bar" role="progressbar" aria-valuenow={player.defense} aria-valuemin="0" aria-valuemax="100" style={defense}>
+              <span className="sr-only">60% Complete</span>
             </div>
           </div>
           {/* <ProgressBar bsStyle="progress-bar" now={player.speed}/>

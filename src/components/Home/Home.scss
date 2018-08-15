@@ -68,4 +68,19 @@
 }
 .starterCard {
   background: white;
+  border: 20px solid rgb(24, 133, 122);
+  border-style: groove;
+}
+
+.playerCardImage {
+  height: 250px;
+  width: 100%;
+}
+.teamCardImage {
+  height: 250px;
+  width: 100%;
+  border: 0;
+}
+.thumbnail{
+  border: 0;
 }
