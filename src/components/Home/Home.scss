@@ -9,12 +9,16 @@
   text-orientation: upright;
   font-family: 'Press Start 2P', cursive;
   font-size: 50px;
+  color: gold;
+  text-shadow: 3px 2px black;
 }
 .West{
   writing-mode: vertical-rl;
   text-orientation: upright;
   font-family: 'Press Start 2P', cursive;
   font-size: 50px;
+  color: blueviolet;
+  text-shadow: 3px 2px black;
 }
 
 .playerButton{
@@ -26,6 +30,65 @@
   background-color: black;
 }
 
-.playerOneBtn {
+.teamButton {
   background-color: transparent;
+  border: none;
+  // margin-right: .25px;
+}
+
+.eastTeamNames {
+  color: gold;
+  font-size: 19px;
+  text-shadow: 3px 2px black;
+}
+
+.westTeamNames {
+  color: blueviolet;
+  font-size: 19px;
+  text-shadow: 3px 2px black;
+}
+
+.skills {
+  color: greenyellow;
+  font-size: 19px;
+  text-shadow: 3px 2px black;
+  text-align: center;
+}
+
+.playerImage {
+  height: 50px;
+  width: 50px;
+}
+
+.progress-bar{
+  background-color: greenyellow !important;
+}
+.progress{
+  background-color: black;
+}
+.starterCard {
+  border: 20px solid rgb(24, 133, 122);
+  border-style: groove;
+}
+
+.starterCardLevelOne {
+  border-bottom: 20px solid rgb(24, 133, 122);
+  border-style: groove;
+  background: white;
+}
+.starterCardLevelTwo {
+padding-top: 20px;
+}
+
+.playerCardImage {
+  height: 250px;
+  width: 100%;
+}
+.teamCardImage {
+  height: 250px;
+  width: 100%;
+  border: 0;
+}
+.thumbnail{
+  border: 0;
 }
