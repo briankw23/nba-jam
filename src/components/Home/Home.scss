@@ -67,9 +67,17 @@
   background-color: black;
 }
 .starterCard {
-  background: white;
   border: 20px solid rgb(24, 133, 122);
   border-style: groove;
+}
+
+.starterCardLevelOne {
+  border-bottom: 20px solid rgb(24, 133, 122);
+  border-style: groove;
+  background: white;
+}
+.starterCardLevelTwo {
+padding-top: 20px;
 }
 
 .playerCardImage {

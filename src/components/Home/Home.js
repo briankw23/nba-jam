@@ -73,6 +73,25 @@ class Home extends React.Component {
         console.error('error getting teams', err);
       });
   };
+  // test
+  // teamClickEventOne = (e, id) => {
+  //   console.error(id);
+  //   playersRequest
+  //     .getRequestRoster(id)
+  //     .then(roster => {
+  //       this.state.playerInContext === 1
+  //         ? this.setState({ playerOneRoster: roster })
+  //         : this.setState({ playerOneRoster: roster });
+  //       this.setState({ teamClickOn: id });
+
+  //       this.state.playerInContext === 1 ? this.setState({ playerOneTeamImage: id }) : this.setState({ playerOneTeamImage: id });
+  //       // this.state.playerInContext === 1 ? this.setState({ pOneStarterOne: []}) : this.setState({ pTwoStarterOne: []});
+  //       // this.state.playerInContext === 1 ? this.setState({ pOneStarterTwo: []}) : this.setState({ pTwoStarterTwo: []});
+  //     })
+  //     .catch(err => {
+  //       console.error('error getting teams', err);
+  //     });
+  // };
 
   playerOneInContext = () => {
     this.setState({ playerInContext: 1 });
@@ -421,7 +440,7 @@ class Home extends React.Component {
     }).map((player) => {
       return (
         <div>
-          <img src={player.image} alt="imageofplayer"/>
+          <img className="playerCardImage" src={player.image} alt="imageofplayer"/>
           <h4 className="skills">{player.name}</h4>
         </div>
       );
@@ -432,7 +451,7 @@ class Home extends React.Component {
     }).map((player) => {
       return (
         <div>
-          <img src={player.image} alt="imageofplayer"/>
+          <img className="playerCardImage" src={player.image} alt="imageofplayer"/>
           <h4 className="skills">{player.name}</h4>
         </div>
       );
@@ -463,10 +482,10 @@ class Home extends React.Component {
       return team.id === this.state.playerTwoTeamImage;
     }).map((team) => {
       return (
-        <div class="row" key={team.id}>
-          <div class="col-sm-12">
-            <div class="thumbnail">
-              <img src={team.image} alt="..."/>
+        <div className="row" key={team.id}>
+          <div className="col-sm-12">
+            <div className="thumbnail">
+              <img className="teamCardImage" src={team.image} alt="..."/>
             </div>
           </div>
         </div>
@@ -632,12 +651,12 @@ class Home extends React.Component {
         {/* Left/PlayerOne/East */}
         <div className="row">
           <div className="col-lg-6 starterCard">
-            <div className="row">
+            <div className="row starterCardLevelOne">
               <div className="col-lg-4">{pOneStarterOneImage}</div>
               <div className="col-lg-4">{playerOneTeamLogo}</div>
               <div className="col-lg-4">{pOneStarterTwoImage}</div>
             </div>
-            <div className="row">
+            <div className="row starterCardLevelTwo">
               <div className="col-lg-4">
                 {pOneStarterOneSkills}
               </div>
@@ -652,13 +671,13 @@ class Home extends React.Component {
             </div>
           </div>
           {/* Right/PlayerTwo/West */}
-          <div className="col-lg-6">
-            <div className="row">
+          <div className="col-lg-6 starterCard">
+            <div className="row starterCardLevelOne">
               <div className="col-lg-4">{pTwoStarterOneImage}</div>
               <div className="col-lg-4">{playerTwoTeamLogo}</div>
               <div className="col-lg-4">{pTwoStarterTwoImage}</div>
             </div>
-            <div className="row">
+            <div className="row starterCardLevelTwo">
               <div className="col-lg-4">
                 {pTwoStarterOneSkills}
               </div>
