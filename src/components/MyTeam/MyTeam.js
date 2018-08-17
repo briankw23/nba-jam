@@ -113,24 +113,23 @@ class MyTeam extends React.Component {
       return (
         <div>
           <Button
-            className="col-sm-8 col-md-offset-2"
-            bsStyle="primary"
+            className="col-lg-6 col-lg-offset-3  teamCard"
+            // bsStyle="primary"
             bsSize="large"
             key={team.id}
             onClick={this.handleShow}
           >
-            <div className="row" key={team.id}>
+            <div className="row teamCardButton" key={team.id}>
               <div>
-                <div className="thumbnail">
+                <div className="">
                   <img src={team.image} alt="..."/>
-                  <div className="caption">
-                    <h3>{team.name}</h3>
+                  <div >
+                    <h3 className="myTeam">{team.name}</h3>
                   </div>
                 </div>
               </div>
             </div>
           </Button>
-
           <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>Player Profile</Modal.Title>
@@ -200,18 +199,81 @@ class MyTeam extends React.Component {
         />
       );
     });
+
+    const speed = {
+      width: `99%`,
+    };
+    const threePointer = {
+      width: `76%`,
+    };
+    const dunks = {
+      width: `45%`,
+    };
+    const defense = {
+      width: `95%`,
+    };
+    const image = 'http://dc-52097-1700323097.us-east-1.elb.amazonaws.com/sites/default/files//imagefield_default_images/blank-profile-md.png';
     return (
-      <div className="MyTeam">
-        <button>
-          <Link to="/createTeam">Create Team</Link>
-        </button>
-        <button>
-          <Link to="/createPlayer">Create Player</Link>
-        </button>
-        <div>{myTeam}</div>
-        <div>
+      <div className="container-fluid">
+        <div className="row">
+          <button>
+            <Link to="/createTeam">Create Team</Link>
+          </button>
         </div>
-        <div>{rosterComponents}</div>
+        <div className="row">
+          {myTeam}
+        </div>
+
+        <div className="row">
+          <h3 className="roster">ROSTER</h3>
+        </div>
+
+        <div className="row" >
+          <div className="createPlayerSection col-lg-3">
+            <Button
+              className="rosterItem"
+            >
+              <Link to="/createPlayer">
+                <div class="">
+                  <div class="rosterItemBody">
+                    <div class="">
+                      <img src={image} alt="..."/>
+                      <div class="rosterItemName">
+                        <h3>CREATE A PLAYER</h3>
+                      </div>
+                      <div>
+                        <div className="progress">
+                          <div className="progress-bar" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style={speed}>
+                            <span className="rosterItemSkills">SPEED</span>
+                          </div>
+                        </div>
+                        <div className="progress">
+                          <div className="progress-bar" role="progressbar" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100" style={threePointer}>
+                            <span className="rosterItemSkills">3 PRTS</span>
+                          </div>
+                        </div>
+                        <div className="progress">
+                          <div className="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style={dunks}>
+                            <span className="rosterItemSkills">DUNKS</span>
+                          </div>
+                        </div>
+                        <div className="progress">
+                          <div className="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style={defense}>
+                            <span className="rosterItemSkills">DEF</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </Button>
+          </div>
+
+          <div className="col-lg-9">
+            {rosterComponents}
+          </div>
+        </div>
       </div>
     );
   }

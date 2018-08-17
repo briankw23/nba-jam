@@ -3,7 +3,7 @@ import React from 'react';
 import teamsRequest from '../../firebaseRequests/teams';
 import playersRequest from '../../firebaseRequests/players';
 
-import { Button, ProgressBar, Modal, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Button, Modal, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 import './Home.css';
 // import PlayerOne from '../PlayerOne/PlayerOne';
@@ -18,6 +18,8 @@ class Home extends React.Component {
     playerTwoTeamImage: '',
     playerInContext: 1,
     teamClickOn: '',
+    // teamSelectOne: false,
+    // teamSelectTwo: false,
     showOne: false,
     showTwo: false,
     pOneStarterOne: [],
@@ -66,6 +68,7 @@ class Home extends React.Component {
         this.setState({ teamClickOn: id });
 
         this.state.playerInContext === 1 ? this.setState({ playerOneTeamImage: id }) : this.setState({ playerTwoTeamImage: id });
+        // this.state.playerInContext === 1 ? this.setState({ teamSelectOne: true }) : this.setState({ teamSelectTwo: true });
         this.state.playerInContext === 1 ? this.setState({ pOneStarterOne: []}) : this.setState({ pTwoStarterOne: []});
         this.state.playerInContext === 1 ? this.setState({ pOneStarterTwo: []}) : this.setState({ pTwoStarterTwo: []});
       })
@@ -608,7 +611,7 @@ class Home extends React.Component {
       // Root Div
       <div className="container-fluid">
         {/* Top Section */}
-        <div className="row">
+        <div className="row top">
           {/* East Banner */}
           <div className="col-lg-1">
             <h2 className="East">East</h2>
@@ -652,8 +655,10 @@ class Home extends React.Component {
         <div className="row">
           <div className="col-lg-6 starterCard">
             <div className="row starterCardLevelOne">
-              <div className="col-lg-4">{pOneStarterOneImage}</div>
-              <div className="col-lg-4">{playerOneTeamLogo}</div>
+              <div className="col-lg-4">{this.state.pl}{pOneStarterOneImage}</div>
+              <div className="col-lg-4">
+                {playerOneTeamLogo}
+              </div>
               <div className="col-lg-4">{pOneStarterTwoImage}</div>
             </div>
             <div className="row starterCardLevelTwo">
