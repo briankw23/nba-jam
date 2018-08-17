@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, Media } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import playersRequest from '../../firebaseRequests/players';
 import './Roster.css';
 
@@ -128,10 +128,10 @@ class Roster extends React.Component {
               bsSize="large"
               key={details.id}
               onClick={this.handleShow}
-              className="rosterItem"
+              className="rosterItem col-lg-3"
             >
-              <div class="row">
-                <div class="col-lg-12 rosterItemBody">
+              <div class="">
+                <div class="rosterItemBody">
                   <div class="">
                     <img src={details.image} alt="..."/>
                     <div class="rosterItemName">

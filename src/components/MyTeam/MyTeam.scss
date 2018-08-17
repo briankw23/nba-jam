@@ -1,5 +1,7 @@
-.MyTeam{
-  background-color: white;
+.myTeam{
+  // background-color: white;
+  font-size: 70px;
+  color: greenyellow;
 }
 .teamCard {
   border: 20px solid rgb(24, 133, 122);
@@ -8,6 +10,22 @@
 }
 .teamCardButton {
   background: transparent;
+  color: greenyellow;
+  font-size: 70px;
+  text-shadow: 3px 2px black;
+  text-align: center;
+}
+.rosterItem {
+  border: 20px solid rgb(24, 133, 122);
+  border-style: groove;
+  background-color: transparent;
+  margin: 5px;
+}
+.rosterItemBody {
+  background-color: transparent;
+
+}
+.rosterItemName{
   color: greenyellow;
   font-size: 19px;
   text-shadow: 3px 2px black;

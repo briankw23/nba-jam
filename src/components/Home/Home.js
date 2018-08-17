@@ -18,6 +18,8 @@ class Home extends React.Component {
     playerTwoTeamImage: '',
     playerInContext: 1,
     teamClickOn: '',
+    // teamSelectOne: false,
+    // teamSelectTwo: false,
     showOne: false,
     showTwo: false,
     pOneStarterOne: [],
@@ -66,6 +68,7 @@ class Home extends React.Component {
         this.setState({ teamClickOn: id });
 
         this.state.playerInContext === 1 ? this.setState({ playerOneTeamImage: id }) : this.setState({ playerTwoTeamImage: id });
+        // this.state.playerInContext === 1 ? this.setState({ teamSelectOne: true }) : this.setState({ teamSelectTwo: true });
         this.state.playerInContext === 1 ? this.setState({ pOneStarterOne: []}) : this.setState({ pTwoStarterOne: []});
         this.state.playerInContext === 1 ? this.setState({ pOneStarterTwo: []}) : this.setState({ pTwoStarterTwo: []});
       })
@@ -652,8 +655,10 @@ class Home extends React.Component {
         <div className="row">
           <div className="col-lg-6 starterCard">
             <div className="row starterCardLevelOne">
-              <div className="col-lg-4">{pOneStarterOneImage}</div>
-              <div className="col-lg-4">{playerOneTeamLogo}</div>
+              <div className="col-lg-4">{this.state.pl}{pOneStarterOneImage}</div>
+              <div className="col-lg-4">
+                {playerOneTeamLogo}
+              </div>
               <div className="col-lg-4">{pOneStarterTwoImage}</div>
             </div>
             <div className="row starterCardLevelTwo">
