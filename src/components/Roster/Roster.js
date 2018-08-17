@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Modal, Media } from 'react-bootstrap';
 import playersRequest from '../../firebaseRequests/players';
+import './Roster.css';
 
 const defaultPlayer = {
   name: '',
@@ -106,25 +107,69 @@ class Roster extends React.Component {
 
   render () {
     const { details } = this.props;
+    const speed = {
+      width: `${details.speed}%`,
+    };
+    const threePointer = {
+      width: `${details.threePointer}%`,
+    };
+    const dunks = {
+      width: `${details.dunks}%`,
+    };
+    const defense = {
+      width: `${details.defense}%`,
+    };
     return (
       <div>
         <div>
           <div onClick={(e) => this.playerClickEvent(e, details.id)}>
             <Button
-              bsStyle="primary"
+              bsStyle=""
               bsSize="large"
               key={details.id}
               onClick={this.handleShow}
+              className="rosterItem"
             >
-              <Media className=''>
-
+              <div class="row">
+                <div class="col-lg-12 rosterItemBody">
+                  <div class="">
+                    <img src={details.image} alt="..."/>
+                    <div class="rosterItemName">
+                      <h3>{details.name}</h3>
+                    </div>
+                    <div>
+                      <div className="progress">
+                        <div className="progress-bar" role="progressbar" aria-valuenow={details.speed} aria-valuemin="0" aria-valuemax="100" style={speed}>
+                          <span className="rosterItemSkills">SPEED</span>
+                        </div>
+                      </div>
+                      <div className="progress">
+                        <div className="progress-bar" role="progressbar" aria-valuenow={details.threePointer} aria-valuemin="0" aria-valuemax="100" style={threePointer}>
+                          <span className="rosterItemSkills">3 PRTS</span>
+                        </div>
+                      </div>
+                      <div className="progress">
+                        <div className="progress-bar" role="progressbar" aria-valuenow={details.dunks} aria-valuemin="0" aria-valuemax="100" style={dunks}>
+                          <span className="rosterItemSkills">DUNKS</span>
+                        </div>
+                      </div>
+                      <div className="progress">
+                        <div className="progress-bar" role="progressbar" aria-valuenow={details.defense} aria-valuemin="0" aria-valuemax="100" style={defense}>
+                          <span className="rosterItemSkills">DEF</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* <Media className="rosterItemBody" >
                 <Media.Left>
                   <img width={64} height={64} src={details.image} alt="thumbnail" />
                 </Media.Left>
                 <Media.Body>
                   <Media.Heading>{details.name}</Media.Heading>
                 </Media.Body>
-              </Media>
+              </Media> */}
             </Button>
           </div>
           <Modal show={this.state.show} onHide={this.handleClose}>

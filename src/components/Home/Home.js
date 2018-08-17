@@ -3,7 +3,7 @@ import React from 'react';
 import teamsRequest from '../../firebaseRequests/teams';
 import playersRequest from '../../firebaseRequests/players';
 
-import { Button, ProgressBar, Modal, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Button, Modal, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 import './Home.css';
 // import PlayerOne from '../PlayerOne/PlayerOne';
@@ -608,7 +608,7 @@ class Home extends React.Component {
       // Root Div
       <div className="container-fluid">
         {/* Top Section */}
-        <div className="row">
+        <div className="row top">
           {/* East Banner */}
           <div className="col-lg-1">
             <h2 className="East">East</h2>

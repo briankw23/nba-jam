@@ -113,15 +113,15 @@ class MyTeam extends React.Component {
       return (
         <div>
           <Button
-            className="col-sm-8 col-md-offset-2"
-            bsStyle="primary"
+            className="col-lg-6 teamCard"
+            // bsStyle="primary"
             bsSize="large"
             key={team.id}
             onClick={this.handleShow}
           >
-            <div className="row" key={team.id}>
+            <div className="row teamCardButton" key={team.id}>
               <div>
-                <div className="thumbnail">
+                <div className="">
                   <img src={team.image} alt="..."/>
                   <div className="caption">
                     <h3>{team.name}</h3>
@@ -130,6 +130,9 @@ class MyTeam extends React.Component {
               </div>
             </div>
           </Button>
+          <button>
+            <Link to="/createPlayer">Create Player</Link>
+          </button>
 
           <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
@@ -201,14 +204,16 @@ class MyTeam extends React.Component {
       );
     });
     return (
-      <div className="MyTeam">
+      <div className="container-fluid">
         <button>
           <Link to="/createTeam">Create Team</Link>
         </button>
-        <button>
+        {/* <button>
           <Link to="/createPlayer">Create Player</Link>
-        </button>
-        <div>{myTeam}</div>
+        </button> */}
+        <div className="col-lg-12">
+          {myTeam}
+        </div>
         <div>
         </div>
         <div>{rosterComponents}</div>
