@@ -12,6 +12,7 @@ import Register from '../components/Register/Register';
 import firebase from 'firebase';
 import fbConnection from '../firebaseRequests/connection';
 import CreatePlayer from '../components/CreatePlayer/CreatePlayer';
+import Verses from '../components/Verses/Verses';
 
 fbConnection();
 
@@ -90,6 +91,7 @@ class App extends Component {
                   <PublicRoute path="/register" authed={this.state.authed} component={Register} />
                   <PrivateRoute path="/createTeam" authed={this.state.authed} component={CreateTeam} />
                   <PrivateRoute path="/createPlayer" authed={this.state.authed} component={CreatePlayer} />
+                  <PrivateRoute path="/gameMode" authed={this.state.authed} component={Verses} />
                   <PrivateRoute path="/myTeam" authed={this.state.authed} component={MyTeam} />
                 </Switch>
               </div>
