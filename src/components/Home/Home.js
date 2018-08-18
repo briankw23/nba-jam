@@ -129,22 +129,26 @@ class Home extends React.Component {
       return (
         <ListGroup>
           <ListGroupItem>
-            <div className="row">
-              <div className="col-sm-2">
-                <img className="playerImage" src={player.image} alt="player"/>
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-sm-12">
+                  <img className="playerImage" src={player.image} alt="player"/>
+                </div>
               </div>
-              <div className="col-sm-6">
-                <h5>{player.name}</h5>
-              </div>
-              <div className="col-sm-4">
-                <button
-                  onClick={e => this.pOneStarterOne(player.id)}
-                >Starter 1
-                </button>
-                <button
-                  onClick={e => this.pOneStarterTwo(player.id)}
-                >Starter 2
-                </button>
+              <div className="row">
+                <div className="col-sm-6">
+                  <h5>{player.name}</h5>
+                </div>
+                <div className="col-sm-6">
+                  <button
+                    onClick={e => this.pOneStarterOne(player.id)}
+                  >Starter 1
+                  </button>
+                  <button
+                    onClick={e => this.pOneStarterTwo(player.id)}
+                  >Starter 2
+                  </button>
+                </div>
               </div>
             </div>
           </ListGroupItem>
@@ -500,26 +504,52 @@ class Home extends React.Component {
       return (
         <ListGroup>
           <ListGroupItem>
-            <div className="row">
-              <div className="col-sm-2">
-                <img className="playerImage" src={player.image} alt="player"/>
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-sm-12">
+                  <img className="playerImage" src={player.image} alt="player"/>
+                </div>
               </div>
-              <div className="col-sm-6">
-                <h5>{player.name}</h5>
-              </div>
-              <div className="col-sm-4">
-                <button
-                  onClick={e => this.pTwoStarterOne(player.id)}
-                >Starter 1
-                </button>
-                <button
-                  onClick={e => this.pTwoStarterTwo(player.id)}
-                >Starter 2
-                </button>
+              <div className="row">
+                <div className="col-sm-6">
+                  <h5>{player.name}</h5>
+                </div>
+                <div className="col-sm-6">
+                  <button
+                    onClick={e => this.pTwoStarterOne(player.id)}
+                  >Starter 1
+                  </button>
+                  <button
+                    onClick={e => this.pTwoStarterTwo(player.id)}
+                  >Starter 2
+                  </button>
+                </div>
               </div>
             </div>
           </ListGroupItem>
         </ListGroup>
+        // <ListGroup>
+        //   <ListGroupItem>
+        //     <div className="row">
+        //       <div className="col-sm-2">
+        //         <img className="playerImage" src={player.image} alt="player"/>
+        //       </div>
+        //       <div className="col-sm-6">
+        //         <h5>{player.name}</h5>
+        //       </div>
+        //       <div className="col-sm-4">
+        //         <button
+        //           onClick={e => this.pTwoStarterOne(player.id)}
+        //         >Starter 1
+        //         </button>
+        //         <button
+        //           onClick={e => this.pTwoStarterTwo(player.id)}
+        //         >Starter 2
+        //         </button>
+        //       </div>
+        //     </div>
+        //   </ListGroupItem>
+        // </ListGroup>
       );
     });
 
