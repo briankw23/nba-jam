@@ -123,7 +123,7 @@ class MyTeam extends React.Component {
             <div className="row teamCardButton" key={team.id}>
               <div>
                 <div className="">
-                  <img src={team.image} alt="..."/>
+                  <img src={team.image}  alt="..."/>
                   <div >
                     <h3 className="myTeam">{team.name}</h3>
                   </div>
@@ -236,7 +236,7 @@ class MyTeam extends React.Component {
             >
               <Link to="/createPlayer">
                 <div class="">
-                  <div class="rosterItemBody">
+                  <div class="">
                     <div class="">
                       <img src={image} alt="..."/>
                       <div class="rosterItemName">
