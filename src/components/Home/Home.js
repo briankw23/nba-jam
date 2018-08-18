@@ -651,6 +651,11 @@ class Home extends React.Component {
                   pOneStarterTwo: this.state.pOneStarterTwo,
                   pTwoStarterOne: this.state.pTwoStarterOne,
                   pTwoStarterTwo: this.state.pTwoStarterTwo,
+                  playerOneRoster: this.state.playerOneRoster,
+                  playerTwoRoster: this.state.playerTwoRoster,
+                  playerOneTeamImage: this.state.playerOneTeamImage,
+                  playerTwoTeamImage: this.state.playerTwoTeamImage,
+                  teams: this.state.teams,
                 },
                 }}>
               START GAME
