@@ -133,8 +133,8 @@ class Roster extends React.Component {
               <div class="">
                 <div class="rosterItemBody">
                   <div class="">
-                    <img src={details.image} alt="..."/>
-                    <div class="rosterItemName">
+                    <img className="playerImage" src={details.image} alt="..."/>
+                    <div className="rosterItemName">
                       <h3>{details.name}</h3>
                     </div>
                     <div>
