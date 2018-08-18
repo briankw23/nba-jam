@@ -18,31 +18,32 @@ class Verses extends  React.Component {
 
     const playerOneTeamLogo = this.props.location.state.teams.filter((team) => {
       return team.id === this.props.location.state.playerOneTeamImage;
-    }).map((team) => {
+    }).map((team, index, array) => {
+
       return team.image;
     });
+
+    console.error('verse', playerOneTeamLogo[0]);
 
     const playerTwoTeamLogo = this.props.location.state.teams.filter((team) => {
       return team.id === this.props.location.state.playerTwoTeamImage;
-    }).map((team) => {
+    }).map((team, index, array) => {
       return team.image;
     });
 
-    console.error(playerOneTeamLogo);
-    console.error(playerOneTeamImage);
     return (
       <div className="container-fluid">
         {/* top row */}
         <div className="row">
           <div className="col-lg-3 score">
-            <img className="col-lg-6" src={playerOneTeamLogo} alt=""/>
+            <img className="col-lg-6 teamLogos" src={playerOneTeamLogo[0]} alt=""/>
             <h1 className="col-lg-6 scoreText">78</h1>
           </div>
           <div className="col-lg-6">
             <h1 className="finalText">FINAL GAME STATS:</h1>
           </div>
           <div className="col-lg-3 score">
-            <img className="col-lg-6" src={playerTwoTeamLogo} alt=""/>
+            <img className="col-lg-6 teamLogos" src={playerTwoTeamLogo[0]} alt=""/>
             <h1 className="col-lg-6 scoreText">78</h1>
           </div>
         </div>
