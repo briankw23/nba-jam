@@ -109,6 +109,7 @@ class MyTeam extends React.Component {
   };
 
   render () {
+    console.error('myteam', JSON.stringify(this.state.myTeam[0]));
     const myTeam = this.state.myTeam.map(team => {
       return (
         <div>

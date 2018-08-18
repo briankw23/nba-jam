@@ -2,6 +2,7 @@ import React from 'react';
 
 import teamsRequest from '../../firebaseRequests/teams';
 import playersRequest from '../../firebaseRequests/players';
+import { Link } from 'react-router-dom';
 
 import { Button, Modal, ListGroup, ListGroupItem } from 'react-bootstrap';
 
@@ -14,8 +15,8 @@ class Home extends React.Component {
     teams: [],
     playerOneRoster: [],
     playerTwoRoster: [],
-    playerOneTeamImage: '',
-    playerTwoTeamImage: '',
+    playerOneTeamImage: 'team30',
+    playerTwoTeamImage: 'team30',
     playerInContext: 1,
     teamClickOn: '',
     // teamSelectOne: false,
@@ -631,8 +632,8 @@ class Home extends React.Component {
         </div>
         {/* End of Top Section */}
         {/* Start of second Section */}
-        <div className="row">
-          <div className="col-lg-6">
+        <div className="row buttonsSec">
+          <div className="col-lg-4">
             <Button
               className="col-sm-12 playerButton btn-success playerOneBtn"
               onClick={this.playerOneInContext}
@@ -640,7 +641,28 @@ class Home extends React.Component {
               Player 1
             </Button>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-4">
+            <Button
+              className="col-sm-12 btn-danger"
+            >
+              <Link
+                to={{pathname: '/gameMode', state: {
+                  pOneStarterOne: this.state.pOneStarterOne,
+                  pOneStarterTwo: this.state.pOneStarterTwo,
+                  pTwoStarterOne: this.state.pTwoStarterOne,
+                  pTwoStarterTwo: this.state.pTwoStarterTwo,
+                  playerOneRoster: this.state.playerOneRoster,
+                  playerTwoRoster: this.state.playerTwoRoster,
+                  playerOneTeamImage: this.state.playerOneTeamImage,
+                  playerTwoTeamImage: this.state.playerTwoTeamImage,
+                  teams: this.state.teams,
+                },
+                }}>
+              START GAME
+              </Link>
+            </Button>
+          </div>
+          <div className="col-lg-4">
             <Button
               className="col-sm-12 playerButton btn-success"
               onClick={this.playerTwoInContext}

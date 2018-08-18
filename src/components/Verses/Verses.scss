@@ -1,0 +1,42 @@
+.scoreText {
+  text-align: center;
+  color: silver;
+  font-size: 55px;
+  text-shadow: 3px 2px black;
+}
+.finalText {
+  text-align: center;
+  color: greenyellow;
+  font-size: 55px;
+  text-shadow: 3px 2px black;
+}
+.score{
+  background-image: linear-gradient(to right, #4073bf, #3165b8, #2258b1, #124aa9, #003ca1);
+}
+
+.teamLogos{
+  height: 100px;
+  width: 100px;
+}
+.playerCardOne{
+  border: 20px solid royalblue;
+  border-style: groove;
+}
+
+.playerCardTwo{
+  border: 20px solid red;
+  border-style: groove;
+}
+.playerImage {
+  height: 200px;
+  width: 200px;
+}
+.second{
+  margin: 10px;
+}
+h2 {
+  color: greenyellow;
+  font-size: 19px;
+  text-shadow: 3px 2px black;
+  text-align: center;
+}
