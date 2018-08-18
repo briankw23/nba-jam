@@ -6,7 +6,7 @@
 }
 .finalText {
   text-align: center;
-  color: silver;
+  color: greenyellow;
   font-size: 55px;
   text-shadow: 3px 2px black;
 }
@@ -17,4 +17,20 @@
 .teamLogos{
   height: 100px;
   width: 100px;
+}
+.playerCardOne{
+  border: 20px solid royalblue;
+  border-style: groove;
+}
+
+.playerCardTwo{
+  border: 20px solid red;
+  border-style: groove;
+}
+.playerImage {
+  height: 200px;
+  width: 200px;
+}
+.second{
+  margin: 10px;
 }

@@ -16,6 +16,11 @@ class Verses extends  React.Component {
       teams,
     } = this.props.location.state;
 
+    const pointsPOSO = Math.floor(Math.random() * 50);
+    const pointsPOST = Math.floor(Math.random() * 50);
+    const pointsPTSO = Math.floor(Math.random() * 50);
+    const pointsPTST = Math.floor(Math.random() * 50);
+
     const playerOneTeamLogo = this.props.location.state.teams.filter((team) => {
       return team.id === this.props.location.state.playerOneTeamImage;
     }).map((team, index, array) => {
@@ -72,45 +77,113 @@ class Verses extends  React.Component {
           </div>
         </div>
         {/* Second Section */}
-        <div className="row">
+        <div className="row second">
           {/* 1 */}
-          <div className="col-lg-6">
+          <div className="col-lg-6 playerCardOne">
             <div className="col-lg-4">
               {/* player one s one image */}
-              <img src={pOneStarterOneImage[0]} alt=""/>
+              <img className="playerImage" src={pOneStarterOneImage[0]} alt=""/>
             </div>
             <div className="col-lg-8">
-
+              <div>
+                <h2>POINTS: {pointsPOSO}</h2>
+              </div>
+              <div>
+                <h2>DUNKS:</h2>
+              </div>
+              <div>
+                <h2>ASSISTS:</h2>
+              </div>
+              <div>
+                <h2>STEALS:</h2>
+              </div>
+              <div>
+                <h2>BLOCKS:</h2>
+              </div>
+              <div>
+                <h2>REBNDS:</h2>
+              </div>
             </div>
           </div>
           {/* 2 */}
-          <div className="col-lg-6">
+          <div className="col-lg-6 playerCardTwo">
             <div className="col-lg-4">
               {/* player two s one image */}
-              <img src={pTwoStarterOneImage[0]} alt=""/>
+              <img className="playerImage" src={pTwoStarterOneImage[0]} alt=""/>
             </div>
             <div className="col-lg-8">
-
+              <div>
+                <h2>POINTS: {pointsPTSO}</h2>
+              </div>
+              <div>
+                <h2>DUNKS:</h2>
+              </div>
+              <div>
+                <h2>ASSISTS:</h2>
+              </div>
+              <div>
+                <h2>STEALS:</h2>
+              </div>
+              <div>
+                <h2>BLOCKS:</h2>
+              </div>
+              <div>
+                <h2>REBNDS:</h2>
+              </div>
             </div>
           </div>
           {/* 3 */}
-          <div className="col-lg-6">
+          <div className="col-lg-6 playerCardOne">
             <div className="col-lg-4">
               {/* player one s2 image */}
-              <img src={pOneStarterTwoImage[0]} alt=""/>
+              <img className="playerImage" src={pOneStarterTwoImage[0]} alt=""/>
             </div>
             <div className="col-lg-8">
-
+              <div>
+                <h2>POINTS: {pointsPOST}</h2>
+              </div>
+              <div>
+                <h2>DUNKS:</h2>
+              </div>
+              <div>
+                <h2>ASSISTS:</h2>
+              </div>
+              <div>
+                <h2>STEALS:</h2>
+              </div>
+              <div>
+                <h2>BLOCKS:</h2>
+              </div>
+              <div>
+                <h2>REBNDS:</h2>
+              </div>
             </div>
           </div>
           {/* 4 */}
-          <div className="col-lg-6">
+          <div className="col-lg-6 playerCardTwo">
             <div className="col-lg-4">
               {/* player two s two image */}
-              <img src={pTwoStarterTwoImage[0]} alt=""/>
+              <img className="playerImage" src={pTwoStarterTwoImage[0]} alt=""/>
             </div>
             <div className="col-lg-8">
-
+              <div>
+                <h2>POINTS: {pointsPTST}</h2>
+              </div>
+              <div>
+                <h2>DUNKS:</h2>
+              </div>
+              <div>
+                <h2>ASSISTS:</h2>
+              </div>
+              <div>
+                <h2>STEALS:</h2>
+              </div>
+              <div>
+                <h2>BLOCKS:</h2>
+              </div>
+              <div>
+                <h2>REBNDS:</h2>
+              </div>
             </div>
           </div>
         </div>
